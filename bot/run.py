@@ -96,7 +96,7 @@ def meta(ep, short=None):
     return out, load(os.path.join(out, "meta.json" if short is None else "short_meta.json"), None)
 
 
-def do_episode(ep, max_hours, n_shorts):
+def do_episode(ep, max_hours, n_shorts, after_title=None):
     import importlib
     m = importlib.import_module(ep)
     n_shorts = min(n_shorts, len(m.SHORTS))
@@ -112,7 +112,13 @@ def do_episode(ep, max_hours, n_shorts):
     if ep not in pub:
         mp4 = render(ep)
         out, md = meta(ep)
-        vid = uploader.upload(ep, mp4, md, "long", os.path.join(out, "thumbnail.jpg"))
+        not_before = None
+        if after_title:                                  # the previous part (uploaded elsewhere) must be on YouTube first
+            prev = uploader.find_upload(after_title)
+            if not prev:
+                raise Stop(f"{ep} is ready, waiting for '{after_title}' to be on YouTube first")
+            not_before = prev[1]
+        vid = uploader.upload(ep, mp4, md, "long", os.path.join(out, "thumbnail.jpg"), not_before=not_before)
         uploader.verify(vid, md)
     for k in range(n_shorts):
         key = f"{ep}_short{k + 1}"
@@ -179,10 +185,12 @@ def main():
         if minutes_used() >= MONTH_CAP:
             raise Stop(f"GitHub minutes for {month()} nearly used ({minutes_used()}) - waiting for next month")
         health()
-        for ep in q["episodes"]:
+        for item in q["episodes"]:
+            item = item if isinstance(item, dict) else {"ep": item}
+            ep = item["ep"]
             if ep in q.get("done", []):
                 continue
-            do_episode(ep, max_hours, q.get("shorts_per_episode", 2))
+            do_episode(ep, max_hours, item.get("shorts", q.get("shorts_per_episode", 2)), item.get("after_title"))
             q.setdefault("done", []).append(ep)
             save(QUEUE, q)
             log(f"{ep} complete")

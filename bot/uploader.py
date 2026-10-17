@@ -94,15 +94,24 @@ def guard(call, units):
 
 
 # ---------------------------------------------------------------- slots
-def next_slot(kind, min_lead_minutes=60):
+def next_slot(kind, min_lead_minutes=60, not_before=None):
+    """earliest free slot; a long video always goes AFTER every long slot already booked (episodes stay in order)"""
     booked = set(_load(SCHEDULE, []))
     now = datetime.datetime.now(IST)
-    day = now.date()
+    floor = now + datetime.timedelta(minutes=min_lead_minutes)
+    if kind == "long":
+        longs = [datetime.datetime.fromisoformat(b) for b in booked
+                 if datetime.datetime.fromisoformat(b).strftime("%H:%M") in SLOTS_IST["long"]]
+        if longs:
+            floor = max(floor, max(longs) + datetime.timedelta(minutes=1))
+    if not_before:
+        floor = max(floor, not_before + datetime.timedelta(minutes=1))
+    day = floor.date()
     while True:
         for hm in SLOTS_IST[kind]:
             h, m = map(int, hm.split(":"))
             slot = datetime.datetime(day.year, day.month, day.day, h, m, tzinfo=IST)
-            if slot >= now + datetime.timedelta(minutes=min_lead_minutes) and slot.isoformat() not in booked:
+            if slot >= floor and slot.isoformat() not in booked:
                 keep = {b for b in booked if b >= (now - datetime.timedelta(days=3)).isoformat()}
                 _save(SCHEDULE, sorted(keep | {slot.isoformat()}))
                 return slot
@@ -121,7 +130,25 @@ def published():
     return _load(PUBLISHED, {})
 
 
-def upload(key, video, meta, kind, thumbnail=None):
+def find_upload(text):
+    """is a video whose title contains `text` on the channel yet? -> (id, publish time) or None (2-3 quota units)"""
+    yt = service()
+    ch = guard(lambda: yt.channels().list(part="contentDetails", mine=True).execute(), COST["list"])
+    uploads = ch["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
+    items = guard(lambda: yt.playlistItems().list(part="snippet", playlistId=uploads, maxResults=50).execute(),
+                  COST["list"]).get("items", [])
+    for it in items:
+        if text in it["snippet"]["title"]:
+            vid = it["snippet"]["resourceId"]["videoId"]
+            st = guard(lambda: yt.videos().list(part="status", id=vid).execute(), COST["list"])["items"][0]["status"]
+            at = st.get("publishAt")
+            when = (datetime.datetime.fromisoformat(at.replace("Z", "+00:00")) if at
+                    else datetime.datetime.now(datetime.timezone.utc))
+            return vid, when.astimezone(IST)
+    return None
+
+
+def upload(key, video, meta, kind, thumbnail=None, not_before=None):
     """Upload `video` (scheduled into the next `kind` slot). Returns the video id; records it under `key`."""
     pub = published()
     if key in pub:
@@ -129,7 +156,7 @@ def upload(key, video, meta, kind, thumbnail=None):
     check_meta(meta)
     need(COST["upload"] + COST["thumb"] + COST["playlist"] + 10)
     yt = service()
-    at = next_slot(kind)
+    at = next_slot(kind, not_before=not_before)
     body = {"snippet": {k: meta[k] for k in ("title", "description", "tags", "categoryId", "defaultLanguage",
                                              "defaultAudioLanguage")},
             "status": {"privacyStatus": "private", "publishAt": at.astimezone(datetime.timezone.utc)
