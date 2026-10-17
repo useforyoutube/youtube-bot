@@ -64,22 +64,53 @@ def _font_for(text, size):
 
 
 def text_path(text, size):
-    return os.path.join(TEXT_DIR, hashlib.md5(f"{text}|{size}".encode()).hexdigest()[:14] + ".png")
+    salt = "" if WINDOWS else "|linux2"          # bump when the Linux renderer changes, so old masks aren't reused
+    return os.path.join(TEXT_DIR, hashlib.md5(f"{text}|{size}{salt}".encode()).hexdigest()[:14] + ".png")
+
+
+def _script(ch):
+    if "ऀ" <= ch <= "ॿ" or ch in "‌‍":
+        return "deva"
+    if "ঀ" <= ch <= "৿":
+        return "beng"
+    return "latin"
+
+
+def _runs(line):
+    """split a line into runs of one script each (spaces stay with the run they're in), so every run gets a font
+    that has its glyphs - the Devanagari font has no '•', the Bengali font no Devanagari, etc."""
+    runs = []
+    for ch in line:
+        sc = runs[-1][0] if ch == " " and runs else _script(ch)
+        if runs and runs[-1][0] == sc:
+            runs[-1][1] += ch
+        else:
+            runs.append([sc, ch])
+    return runs
+
+
+_SAMPLE = {"deva": "क", "beng": "ক", "latin": "A"}
 
 
 def _render_linux(text, size, path):
-    """white-on-black mask like the Windows engine makes; multi-line text is centred line by line"""
-    font = _font_for(text, size)
-    lines = text.split("\n")
-    boxes = [font.getbbox(ln or " ") for ln in lines]
-    lh = int(size * 1.35)
-    w = max(b[2] - min(0, b[0]) for b in boxes) + 16
-    h = lh * len(lines) + 16
+    """white-on-black mask like the Windows engine makes; mixed scripts per line, lines centred"""
     from PIL import ImageDraw
+    lines = text.split("\n")
+    lh = int(size * 1.35)
+    laid = []
+    for ln in lines:
+        parts = [(_font_for(_SAMPLE[sc], size), t) for sc, t in _runs(ln or " ")]
+        laid.append((parts, sum(f.getlength(t) for f, t in parts)))
+    asc = max(f.getmetrics()[0] for parts, _ in laid for f, _ in parts)
+    w = int(max(lw for _, lw in laid)) + 24
+    h = lh * len(lines) + int(size * 0.5) + 16
     im = Image.new("L", (w, h), 0)
     d = ImageDraw.Draw(im)
-    for i, (ln, b) in enumerate(zip(lines, boxes)):
-        d.text(((w - (b[2] - b[0])) / 2 - b[0], 8 + i * lh), ln, font=font, fill=255)
+    for i, (parts, lw) in enumerate(laid):
+        x = (w - lw) / 2
+        for f, t in parts:
+            d.text((x, 8 + i * lh + asc - f.getmetrics()[0]), t, font=f, fill=255)
+            x += f.getlength(t)
     im.save(path)
 
 
