@@ -1,0 +1,96 @@
+name: Daily video run
+
+on:
+  schedule:
+    - cron: "10 0 * * *"        # 05:40 IST, just after the free picture allowance resets (00:00 UTC)
+  workflow_dispatch:
+    inputs:
+      max_hours:
+        description: "Time budget for this run (hours, max 5)"
+        default: "4.5"
+      selftest:
+        description: "Self-test only (render a 25 s test video, upload nothing)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: video-bot                # never two runs at once
+  cancel-in-progress: false
+
+permissions:
+  contents: write                 # save progress (state/) back to the repo
+  actions: write                  # tidy old work caches
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Fonts for Hindi / Bengali text
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-core libraqm0 libfribidi0 > /dev/null
+
+      - name: Python packages
+        run: pip install -q -r requirements.txt
+
+      - name: Restore work (pictures in progress, music)
+        uses: actions/cache/restore@v4
+        with:
+          path: work
+          key: work-${{ github.run_id }}
+          restore-keys: work-
+
+      - name: Make and upload videos
+        env:
+          BOT_WORK: ${{ github.workspace }}/work
+          YT_TOKEN: ${{ secrets.YT_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_TOKEN: ${{ secrets.CF_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ "${{ github.event.inputs.selftest }}" = "true" ]; then
+            rm -f work/output/selftest/*.done
+            python bot/run.py --selftest
+          else
+            python bot/run.py --max-hours "${{ github.event.inputs.max_hours || '4.5' }}"
+          fi
+
+      - name: Keep the self-test video for checking
+        if: github.event.inputs.selftest == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: selftest
+          path: |
+            work/output/selftest/*.mp4
+            work/output/selftest/thumbnail.jpg
+          retention-days: 3
+
+      - name: Save work
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: work
+          key: work-${{ github.run_id }}
+
+      - name: Tidy old work caches
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh cache list --key work- --sort created_at --order desc --limit 50 --json id --jq '.[2:][].id' |
+            xargs -r -n1 gh cache delete || true
+
+      - name: Save progress
+        if: always()
+        run: |
+          git config user.name "video-bot"
+          git config user.email "video-bot@users.noreply.github.com"
+          git add state series library
+          git diff --cached --quiet || git commit -q -m "bot: progress $(date -u +%F)"
+          git push -q || (git pull -q --rebase && git push -q)
