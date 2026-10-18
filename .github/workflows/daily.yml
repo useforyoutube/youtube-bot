@@ -25,6 +25,7 @@ concurrency:
 
 permissions:
   contents: write
+  actions: write
 
 env:
   BOT_WORK: ${{ github.workspace }}/work
