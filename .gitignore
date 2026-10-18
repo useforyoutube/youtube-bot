@@ -1,0 +1,17 @@
+# never commit logins or keys - they live in GitHub secrets
+youtube_token.json
+youtube_analytics_token.json
+client_secret.json
+cloudflare.json
+*.token.json
+
+# scratch: pictures in progress, renders, music (kept in the Actions cache instead)
+work/
+__pycache__/
+*.pyc
+
+# the bot's code and data live encrypted in vault.enc; these are extracted only at runtime
+/bot/
+/series/
+/state/
+/library/

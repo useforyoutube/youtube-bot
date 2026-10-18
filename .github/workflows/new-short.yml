@@ -1,0 +1,90 @@
+name: New Short
+
+on:
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: "Topic or title (any language) - or leave empty and give a link"
+        required: false
+      link:
+        description: "Link to take the idea from (YouTube, Facebook, Instagram, any website) - optional"
+        required: false
+      language:
+        description: "Language"
+        type: choice
+        default: hi
+        options: [hi, bn, en, ta, te, mr, gu, kn, ml, pa]
+      channel:
+        description: "Channel"
+        type: choice
+        default: main
+        options: [main, channel2, channel3, channel4, channel5]
+      count:
+        description: "How many different Shorts on this topic (one is posted per day)"
+        type: choice
+        default: "1"
+        options: ["1", "2", "3", "5", "7", "10"]
+
+concurrency:
+  group: video-bot
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+env:
+  BOT_WORK: ${{ github.workspace }}/work
+  REPO_KEY: ${{ secrets.REPO_KEY }}
+  YT_TOKEN: ${{ secrets.YT_TOKEN }}
+  BOT_KEY: ${{ secrets.BOT_KEY }}
+  CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+  CF_TOKEN: ${{ secrets.CF_TOKEN }}
+  GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+  GH_TOKEN: ${{ github.token }}
+
+jobs:
+  short:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Fonts for Indian scripts
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-core libraqm0 libfribidi0 > /dev/null
+      - name: Unlock the bot
+        run: pip install -q cryptography && python vault/boot.py open
+      - run: pip install -q -r requirements.txt
+      - name: Restore work (music, pictures)
+        uses: actions/cache/restore@v4
+        with:
+          path: work
+          key: work-${{ github.run_id }}
+          restore-keys: work-
+      - name: Research and write the Short(s)
+        env:
+          TOPIC: ${{ github.event.inputs.topic }}
+          LINK: ${{ github.event.inputs.link }}
+          LANGUAGE: ${{ github.event.inputs.language }}
+          CHANNEL: ${{ github.event.inputs.channel }}
+          COUNT: ${{ github.event.inputs.count }}
+        run: python bot/shorts.py --topic "$TOPIC" --link "$LINK" --language "$LANGUAGE" --channel "$CHANNEL" --count "$COUNT"
+      - name: Make and upload today's Short (the rest follow one a day)
+        run: python bot/run.py --shorts-only --max-hours 0.8
+      - name: Save work
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: work
+          key: work-${{ github.run_id }}
+      - name: Lock and save
+        if: always()
+        run: |
+          python vault/boot.py seal || true
+          git config user.name "video-bot"
+          git config user.email "video-bot@users.noreply.github.com"
+          git add vault.enc STATUS.md
+          git diff --cached --quiet || git commit -q -m "bot: new Short"
+          git push -q || (git pull -q --rebase && git push -q)

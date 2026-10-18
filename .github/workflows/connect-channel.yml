@@ -1,0 +1,46 @@
+name: Connect a channel
+
+on:
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: "Slot for the channel (use 'main' to refresh Sujay Ganguly Creations' login)"
+        type: choice
+        default: channel2
+        options: [main, channel2, channel3, channel4, channel5]
+
+concurrency:
+  group: video-bot
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+env:
+  REPO_KEY: ${{ secrets.REPO_KEY }}
+  BOT_KEY: ${{ secrets.BOT_KEY }}
+  GOOGLE_TV_CLIENT_ID: ${{ secrets.GOOGLE_TV_CLIENT_ID }}
+  GOOGLE_TV_CLIENT_SECRET: ${{ secrets.GOOGLE_TV_CLIENT_SECRET }}
+
+jobs:
+  connect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unlock the bot
+        run: pip install -q requests cryptography && python vault/boot.py open
+      - name: "Login from your phone - open this run's Summary for the code"
+        run: python bot/connect.py "${{ github.event.inputs.channel }}"
+      - name: Lock and save
+        if: always()
+        run: |
+          python vault/boot.py seal || true
+          git config user.name "video-bot"
+          git config user.email "video-bot@users.noreply.github.com"
+          git add vault.enc
+          git diff --cached --quiet || git commit -q -m "bot: channel connected"
+          git push -q || (git pull -q --rebase && git push -q)
