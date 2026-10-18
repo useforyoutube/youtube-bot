@@ -1,5 +1,5 @@
 # 🤖 Video bot status
-_Updated 2026-10-18 08:44 UTC by the bot._
+_Updated 18 Oct 2026, 03:50 PM IST by the bot._
 
 ## Targets
 | | Now | Target |
@@ -30,10 +30,19 @@ kalki06, kalki07, kalki08, vishnu24, kalki09, kalki01, kalki02, kalki03, kalki04
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 30 / 1,900
-- YouTube quota today (Pacific): 51 / 9,000
+- GitHub minutes this month: 56 / 1,900
+- YouTube quota today (Pacific): 10000 / 9,000
 
 ## This run
 ```
-2026-10-18 08:44 UTC] health ok | YouTube quota used today 0 | GitHub minutes this month 28
+18 Oct 03:29 PM IST] health ok | YouTube quota used today 51 | GitHub minutes this month 33
+18 Oct 03:29 PM IST] YouTube quota used up - remaining finished videos upload next run
+18 Oct 03:29 PM IST] pictures for kalki06
+18 Oct 03:29 PM IST] render kalki06
+18 Oct 03:48 PM IST] metadata kalki06
+18 Oct 03:48 PM IST] render kalki06_short1
+18 Oct 03:50 PM IST] pictures for vishnu24
+18 Oct 03:50 PM IST] vishnu24: free picture limit for today - its pictures continue after the 05:30 IST reset
+18 Oct 03:50 PM IST] queue worked through
+18 Oct 03:50 PM IST] stopping for now: YouTube quota: 10000 used today, need 1
 ```
