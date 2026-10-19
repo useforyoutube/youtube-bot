@@ -1,5 +1,5 @@
 # 🤖 Video bot status
-_Updated 20 Oct 2026, 12:53 AM IST by the bot._
+_Updated 20 Oct 2026, 02:33 AM IST by the bot._
 
 ## Targets
 | | Now | Target |
@@ -15,7 +15,7 @@ _Updated 20 Oct 2026, 12:53 AM IST by the bot._
 | रक्तबीज बनाम महिषासुर: महाप्रलय | hi | main | active | 3/5 | ⏳ |
 
 ## Queue (next to make)
-vishnu24, kalki07, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, raktabee02, raktabee03
+vishnu24, kalki07, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, raktabee03
 
 ## Latest uploads
 - vishnu24: https://youtu.be/5b_ESfziPr8
@@ -31,19 +31,22 @@ vishnu24, kalki07, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 363 / 1,900
-- YouTube quota today (Pacific): 8989 / 9,000
+- GitHub minutes this month: 451 / 1,900
+- YouTube quota today (Pacific): 8992 / 9,000
 
 ## This run
 ```
-20 Oct 12:28 AM IST] health ok | YouTube quota used today 8986 | GitHub minutes this month 337
-20 Oct 12:29 AM IST] focus: making the movie 'रक्तबीज बनाम महिषासुर: महाप्रलय' - other series are paused until it is uploaded
-20 Oct 12:29 AM IST] pictures for raktabee02
-20 Oct 12:31 AM IST] render raktabee02
-20 Oct 12:33 AM IST] render raktabee02
-20 Oct 12:35 AM IST] render raktabee02
-20 Oct 12:39 AM IST] raktabee02 failed (skipping the rest of this series this run): RuntimeError: render failed: raktabee02
-20 Oct 12:39 AM IST] queue worked through
-20 Oct 12:39 AM IST] stopping for now: YouTube quota: 8989 used today, need 50
-watchdog: stuck for 3 runs - self-repair started
+20 Oct 01:07 AM IST] health ok | YouTube quota used today 8989 | GitHub minutes this month 363
+20 Oct 01:07 AM IST] focus: making the movie 'रक्तबीज बनाम महिषासुर: महाप्रलय' - other series are paused until it is uploaded
+20 Oct 01:07 AM IST] pictures for raktabee01
+20 Oct 01:07 AM IST] render raktabee01
+20 Oct 01:31 AM IST] render raktabee01_short1
+20 Oct 01:35 AM IST] raktabee01 complete
+20 Oct 01:35 AM IST] pictures for raktabee02
+20 Oct 01:35 AM IST] render raktabee02
+20 Oct 02:06 AM IST] raktabee02 complete
+20 Oct 02:06 AM IST] pictures for raktabee03
+20 Oct 02:24 AM IST] render raktabee03
+20 Oct 02:33 AM IST] stopping for now: voice service unavailable while rendering raktabee03 - continuing next run
+20 Oct 02:33 AM IST] stopping for now: YouTube quota: 8992 used today, need 50
 ```
