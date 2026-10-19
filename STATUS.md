@@ -1,5 +1,5 @@
 # 🤖 Video bot status
-_Updated 19 Oct 2026, 06:25 PM IST by the bot._
+_Updated 19 Oct 2026, 07:49 PM IST by the bot._
 
 ## Targets
 | | Now | Target |
@@ -12,7 +12,7 @@ _Updated 19 Oct 2026, 06:25 PM IST by the bot._
 | Series | Language | Channel | Status | Written | Movie |
 |---|---|---|---|---|---|
 | कल्कि | hi | main | active | 9/15 | ⏳ |
-| रक्तबीज बनाम महिषासुर: महाप्रलय | hi | main | next | 0/5 | ⏳ |
+| रक्तबीज बनाम महिषासुर: महाप्रलय | hi | main | active | 1/5 | ⏳ |
 
 ## Queue (next to make)
 vishnu24, kalki07, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05
@@ -31,20 +31,18 @@ vishnu24, kalki07, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 170 / 1,900
-- YouTube quota today (Pacific): 8962 / 9,000
+- GitHub minutes this month: 249 / 1,900
+- YouTube quota today (Pacific): 8965 / 9,000
 
 ## This run
 ```
-19 Oct 05:27 PM IST] health ok | YouTube quota used today 8959 | GitHub minutes this month 110
-19 Oct 05:31 PM IST] pictures for vishnu24
-19 Oct 05:31 PM IST] metadata vishnu24
-19 Oct 05:31 PM IST] YouTube quota used up (YouTube quota: 8959 used today, need 1710) - rendering continues, uploads next run
-19 Oct 05:31 PM IST] pictures for kalki07
-19 Oct 05:31 PM IST] render kalki07
-19 Oct 05:50 PM IST] render kalki07
-19 Oct 06:07 PM IST] render kalki07
-19 Oct 06:25 PM IST] kalki07 failed (skipping the rest of this series this run): RuntimeError: render failed: kalki07
-19 Oct 06:25 PM IST] queue worked through
-19 Oct 06:25 PM IST] stopping for now: YouTube quota: 8962 used today, need 50
+19 Oct 06:32 PM IST] health ok | YouTube quota used today 8962 | GitHub minutes this month 170
+19 Oct 06:34 PM IST] writer problem (the run continues): JSONDecodeError: Expecting ',' delimiter: line 713 column 14 (char 15488)
+19 Oct 06:34 PM IST] focus: making the movie 'रक्तबीज बनाम महिषासुर: महाप्रलय' - other series are paused until it is uploaded
+19 Oct 06:34 PM IST] pictures for raktabee01
+19 Oct 07:18 PM IST] render raktabee01
+19 Oct 07:45 PM IST] render raktabee01_short1
+19 Oct 07:49 PM IST] raktabee01 complete
+19 Oct 07:49 PM IST] queue worked through
+19 Oct 07:49 PM IST] stopping for now: YouTube quota: 8965 used today, need 50
 ```
