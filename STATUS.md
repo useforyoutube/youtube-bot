@@ -1,5 +1,5 @@
 # 🤖 Video bot status
-_Updated 19 Oct 2026, 02:25 PM IST by the bot._
+_Updated 19 Oct 2026, 06:25 PM IST by the bot._
 
 ## Targets
 | | Now | Target |
@@ -12,6 +12,7 @@ _Updated 19 Oct 2026, 02:25 PM IST by the bot._
 | Series | Language | Channel | Status | Written | Movie |
 |---|---|---|---|---|---|
 | कल्कि | hi | main | active | 9/15 | ⏳ |
+| रक्तबीज बनाम महिषासुर: महाप्रलय | hi | main | next | 0/5 | ⏳ |
 
 ## Queue (next to make)
 vishnu24, kalki07, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05
@@ -30,24 +31,20 @@ vishnu24, kalki07, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 110 / 1,900
-- YouTube quota today (Pacific): 8959 / 9,000
+- GitHub minutes this month: 170 / 1,900
+- YouTube quota today (Pacific): 8962 / 9,000
 
 ## This run
 ```
-19 Oct 02:23 PM IST] health ok | YouTube quota used today 0 | GitHub minutes this month 107
-19 Oct 02:24 PM IST] finished video kalki04_short1 uploaded
-19 Oct 02:24 PM IST] finished video kalki04_short2 uploaded
-19 Oct 02:24 PM IST] pictures for kalki06
-19 Oct 02:24 PM IST] metadata kalki06
-19 Oct 02:24 PM IST] metadata kalki06
-19 Oct 02:24 PM IST] kalki06 complete
-19 Oct 02:24 PM IST] pictures for vishnu24
-19 Oct 02:24 PM IST] metadata vishnu24
-19 Oct 02:25 PM IST] metadata vishnu24
-19 Oct 02:25 PM IST] YouTube quota used up (YouTube quota: 8356 used today, need 1710) - rendering continues, uploads next run
-19 Oct 02:25 PM IST] pictures for kalki07
-19 Oct 02:25 PM IST] kalki07: free picture limit for today - its pictures continue after the 05:30 IST reset
-19 Oct 02:25 PM IST] queue worked through
-19 Oct 02:25 PM IST] stopping for now: YouTube quota: 8959 used today, need 50
+19 Oct 05:27 PM IST] health ok | YouTube quota used today 8959 | GitHub minutes this month 110
+19 Oct 05:31 PM IST] pictures for vishnu24
+19 Oct 05:31 PM IST] metadata vishnu24
+19 Oct 05:31 PM IST] YouTube quota used up (YouTube quota: 8959 used today, need 1710) - rendering continues, uploads next run
+19 Oct 05:31 PM IST] pictures for kalki07
+19 Oct 05:31 PM IST] render kalki07
+19 Oct 05:50 PM IST] render kalki07
+19 Oct 06:07 PM IST] render kalki07
+19 Oct 06:25 PM IST] kalki07 failed (skipping the rest of this series this run): RuntimeError: render failed: kalki07
+19 Oct 06:25 PM IST] queue worked through
+19 Oct 06:25 PM IST] stopping for now: YouTube quota: 8962 used today, need 50
 ```
