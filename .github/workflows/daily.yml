@@ -65,6 +65,7 @@ jobs:
       - name: Make and upload videos
         id: bot
         run: |
+          rm -f work/continue.flag
           if [ "${{ github.event.inputs.write_only }}" = "true" ]; then
             python bot/run.py --write-only
           elif [ "${{ github.event.inputs.selftest }}" = "true" ]; then
