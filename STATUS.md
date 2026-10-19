@@ -1,5 +1,5 @@
 # 🤖 Video bot status
-_Updated 19 Oct 2026, 07:49 PM IST by the bot._
+_Updated 19 Oct 2026, 08:01 PM IST by the bot._
 
 ## Targets
 | | Now | Target |
@@ -31,18 +31,14 @@ vishnu24, kalki07, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 249 / 1,900
-- YouTube quota today (Pacific): 8965 / 9,000
+- GitHub minutes this month: 260 / 1,900
+- YouTube quota today (Pacific): 8968 / 9,000
 
 ## This run
 ```
-19 Oct 06:32 PM IST] health ok | YouTube quota used today 8962 | GitHub minutes this month 170
-19 Oct 06:34 PM IST] writer problem (the run continues): JSONDecodeError: Expecting ',' delimiter: line 713 column 14 (char 15488)
-19 Oct 06:34 PM IST] focus: making the movie 'रक्तबीज बनाम महिषासुर: महाप्रलय' - other series are paused until it is uploaded
-19 Oct 06:34 PM IST] pictures for raktabee01
-19 Oct 07:18 PM IST] render raktabee01
-19 Oct 07:45 PM IST] render raktabee01_short1
-19 Oct 07:49 PM IST] raktabee01 complete
-19 Oct 07:49 PM IST] queue worked through
-19 Oct 07:49 PM IST] stopping for now: YouTube quota: 8965 used today, need 50
+19 Oct 07:51 PM IST] health ok | YouTube quota used today 8965 | GitHub minutes this month 249
+19 Oct 08:01 PM IST] writer problem (the run continues): RuntimeError: Gemini unavailable
+19 Oct 08:01 PM IST] focus: making the movie 'रक्तबीज बनाम महिषासुर: महाप्रलय' - other series are paused until it is uploaded
+19 Oct 08:01 PM IST] queue worked through
+19 Oct 08:01 PM IST] stopping for now: YouTube quota: 8968 used today, need 50
 ```
