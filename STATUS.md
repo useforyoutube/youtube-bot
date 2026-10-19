@@ -1,5 +1,5 @@
 # 🤖 Video bot status
-_Updated 19 Oct 2026, 08:14 PM IST by the bot._
+_Updated 19 Oct 2026, 08:25 PM IST by the bot._
 
 ## Targets
 | | Now | Target |
@@ -31,14 +31,14 @@ vishnu24, kalki07, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 271 / 1,900
-- YouTube quota today (Pacific): 8971 / 9,000
+- GitHub minutes this month: 281 / 1,900
+- YouTube quota today (Pacific): 8974 / 9,000
 
 ## This run
 ```
-19 Oct 08:04 PM IST] health ok | YouTube quota used today 8968 | GitHub minutes this month 260
-19 Oct 08:14 PM IST] writer problem (the run continues): RuntimeError: Gemini unavailable
-19 Oct 08:14 PM IST] focus: making the movie 'रक्तबीज बनाम महिषासुर: महाप्रलय' - other series are paused until it is uploaded
-19 Oct 08:14 PM IST] queue worked through
-19 Oct 08:14 PM IST] stopping for now: YouTube quota: 8971 used today, need 50
+19 Oct 08:17 PM IST] health ok | YouTube quota used today 8971 | GitHub minutes this month 271
+19 Oct 08:25 PM IST] writer problem (the run continues): RuntimeError: Gemini unavailable
+19 Oct 08:25 PM IST] focus: making the movie 'रक्तबीज बनाम महिषासुर: महाप्रलय' - other series are paused until it is uploaded
+19 Oct 08:25 PM IST] queue worked through
+19 Oct 08:25 PM IST] stopping for now: YouTube quota: 8974 used today, need 50
 ```
