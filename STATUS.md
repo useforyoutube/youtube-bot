@@ -1,5 +1,5 @@
 # 🤖 Video bot status
-_Updated 20 Oct 2026, 02:33 AM IST by the bot._
+_Updated 20 Oct 2026, 02:46 AM IST by the bot._
 
 ## Targets
 | | Now | Target |
@@ -12,10 +12,10 @@ _Updated 20 Oct 2026, 02:33 AM IST by the bot._
 | Series | Language | Channel | Status | Written | Movie |
 |---|---|---|---|---|---|
 | कल्कि | hi | main | active | 9/15 | ⏳ |
-| रक्तबीज बनाम महिषासुर: महाप्रलय | hi | main | active | 3/5 | ⏳ |
+| रक्तबीज बनाम महिषासुर: महाप्रलय | hi | main | active | 4/5 | ⏳ |
 
 ## Queue (next to make)
-vishnu24, kalki07, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, raktabee03
+vishnu24, kalki07, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, raktabee03, raktabee04
 
 ## Latest uploads
 - vishnu24: https://youtu.be/5b_ESfziPr8
@@ -31,22 +31,15 @@ vishnu24, kalki07, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 451 / 1,900
-- YouTube quota today (Pacific): 8992 / 9,000
+- GitHub minutes this month: 462 / 1,900
+- YouTube quota today (Pacific): 8995 / 9,000
 
 ## This run
 ```
-20 Oct 01:07 AM IST] health ok | YouTube quota used today 8989 | GitHub minutes this month 363
-20 Oct 01:07 AM IST] focus: making the movie 'रक्तबीज बनाम महिषासुर: महाप्रलय' - other series are paused until it is uploaded
-20 Oct 01:07 AM IST] pictures for raktabee01
-20 Oct 01:07 AM IST] render raktabee01
-20 Oct 01:31 AM IST] render raktabee01_short1
-20 Oct 01:35 AM IST] raktabee01 complete
-20 Oct 01:35 AM IST] pictures for raktabee02
-20 Oct 01:35 AM IST] render raktabee02
-20 Oct 02:06 AM IST] raktabee02 complete
-20 Oct 02:06 AM IST] pictures for raktabee03
-20 Oct 02:24 AM IST] render raktabee03
-20 Oct 02:33 AM IST] stopping for now: voice service unavailable while rendering raktabee03 - continuing next run
-20 Oct 02:33 AM IST] stopping for now: YouTube quota: 8992 used today, need 50
+20 Oct 02:36 AM IST] health ok | YouTube quota used today 8992 | GitHub minutes this month 451
+20 Oct 02:38 AM IST] focus: making the movie 'रक्तबीज बनाम महिषासुर: महाप्रलय' - other series are paused until it is uploaded
+20 Oct 02:38 AM IST] pictures for raktabee03
+20 Oct 02:38 AM IST] render raktabee03
+20 Oct 02:46 AM IST] stopping for now: voice service unavailable while rendering raktabee03 - continuing next run
+20 Oct 02:46 AM IST] stopping for now: YouTube quota: 8995 used today, need 50
 ```
