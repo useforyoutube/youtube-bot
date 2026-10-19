@@ -1,21 +1,21 @@
 # 🤖 Video bot status
-_Updated 19 Oct 2026, 10:27 PM IST by the bot._
+_Updated 20 Oct 2026, 12:53 AM IST by the bot._
 
 ## Targets
 | | Now | Target |
 |---|---|---|
-| Watch hours / day (28-day avg) | 1.3 | 10.0 |
+| Watch hours / day (28-day avg) | 1.32 | 10.0 |
 | New subscribers / day | -0.07 | 3.0 |
-| Watch hours, last 12 months (4,000 for monetization) | 326.0 | 4000 |
+| Watch hours, last 12 months (4,000 for monetization) | 326.6 | 4000 |
 
 ## Series
 | Series | Language | Channel | Status | Written | Movie |
 |---|---|---|---|---|---|
 | कल्कि | hi | main | active | 9/15 | ⏳ |
-| रक्तबीज बनाम महिषासुर: महाप्रलय | hi | main | active | 2/5 | ⏳ |
+| रक्तबीज बनाम महिषासुर: महाप्रलय | hi | main | active | 3/5 | ⏳ |
 
 ## Queue (next to make)
-vishnu24, kalki07, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05
+vishnu24, kalki07, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, raktabee02, raktabee03
 
 ## Latest uploads
 - vishnu24: https://youtu.be/5b_ESfziPr8
@@ -31,14 +31,19 @@ vishnu24, kalki07, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 337 / 1,900
-- YouTube quota today (Pacific): 8986 / 9,000
+- GitHub minutes this month: 363 / 1,900
+- YouTube quota today (Pacific): 8989 / 9,000
 
 ## This run
 ```
-19 Oct 10:16 PM IST] health ok | YouTube quota used today 8983 | GitHub minutes this month 325
-19 Oct 10:27 PM IST] writer problem (the run continues): AssertionError: tags total 505 chars (max ~500)
-19 Oct 10:27 PM IST] focus: making the movie 'रक्तबीज बनाम महिषासुर: महाप्रलय' - other series are paused until it is uploaded
-19 Oct 10:27 PM IST] queue worked through
-19 Oct 10:27 PM IST] stopping for now: YouTube quota: 8986 used today, need 50
+20 Oct 12:28 AM IST] health ok | YouTube quota used today 8986 | GitHub minutes this month 337
+20 Oct 12:29 AM IST] focus: making the movie 'रक्तबीज बनाम महिषासुर: महाप्रलय' - other series are paused until it is uploaded
+20 Oct 12:29 AM IST] pictures for raktabee02
+20 Oct 12:31 AM IST] render raktabee02
+20 Oct 12:33 AM IST] render raktabee02
+20 Oct 12:35 AM IST] render raktabee02
+20 Oct 12:39 AM IST] raktabee02 failed (skipping the rest of this series this run): RuntimeError: render failed: raktabee02
+20 Oct 12:39 AM IST] queue worked through
+20 Oct 12:39 AM IST] stopping for now: YouTube quota: 8989 used today, need 50
+watchdog: stuck for 3 runs - self-repair started
 ```
