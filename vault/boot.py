@@ -2,7 +2,9 @@
 Only a GitHub run with the REPO_KEY secret can unlock them; the repo can be public and nobody can read or use
 the files without the key. This bootstrap does only two harmless things - unlock and lock - and holds no secret.
     python vault/boot.py open     decrypt vault.enc -> bot/ series/ state/ library/
-    python vault/boot.py seal     pack those dirs -> vault.enc"""
+    python vault/boot.py seal     pack those dirs -> vault.enc
+    python vault/boot.py adopt-code <other.enc>   take bot/ (the code) from another vault, keep everything else
+                                                  (used when a run's save clashes with a newer code push)"""
 import io
 import os
 import sys
@@ -47,5 +49,19 @@ def open_():
     print("vault opened")
 
 
+def adopt_code(path):
+    data = fernet().decrypt(open(path, "rb").read())
+    with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as tar:
+        members = [m for m in tar.getmembers() if m.name == "bot" or m.name.startswith("bot/")]
+        try:
+            tar.extractall(ROOT, members=members, filter="data")
+        except TypeError:
+            tar.extractall(ROOT, members=members)
+    print(f"took the newer code ({len(members)} files) from {os.path.basename(path)}")
+
+
 if __name__ == "__main__":
-    {"open": open_, "seal": seal}[sys.argv[1]]()
+    if sys.argv[1] == "adopt-code":
+        adopt_code(sys.argv[2])
+    else:
+        {"open": open_, "seal": seal}[sys.argv[1]]()
