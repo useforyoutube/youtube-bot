@@ -1,0 +1,58 @@
+name: Sample video (nothing uploaded)
+
+on:
+  workflow_dispatch:
+    inputs:
+      kind:
+        description: "poem or story"
+        default: "poem"
+      topic:
+        description: "Character / moment / topic"
+        default: "कर्ण की पीड़ा - माँ कुंती से"
+
+concurrency:
+  group: sample-video              # runs next to the daily bot; never saves anything
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  BOT_WORK: ${{ github.workspace }}/work
+  REPO_KEY: ${{ secrets.REPO_KEY }}
+  BOT_KEY: ${{ secrets.BOT_KEY }}
+  CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+  CF_TOKEN: ${{ secrets.CF_TOKEN }}
+  GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Fonts for Indian scripts
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-core libraqm0 libfribidi0 > /dev/null
+      - name: Unlock the bot
+        run: pip install -q cryptography && python vault/boot.py open
+      - run: pip install -q -r requirements.txt
+      - name: Music and pictures from the bot's work cache (read only)
+        uses: actions/cache/restore@v4
+        with:
+          path: work
+          key: work-sample-${{ github.run_id }}
+          restore-keys: work-
+      - name: Make the sample
+        run: python bot/sample.py "${{ github.event.inputs.kind }}" "${{ github.event.inputs.topic }}"
+      - name: Keep the sample video
+        uses: actions/upload-artifact@v4
+        with:
+          name: sample-video
+          path: work/sample/*.mp4
+          retention-days: 7
