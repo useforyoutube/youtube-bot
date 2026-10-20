@@ -27,6 +27,7 @@ env:
   BOT_WORK: ${{ github.workspace }}/work
   REPO_KEY: ${{ secrets.REPO_KEY }}
   BOT_KEY: ${{ secrets.BOT_KEY }}
+  YT_TOKEN: ${{ secrets.YT_TOKEN }}           # read only here: the sample job never uploads
   CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
   CF_TOKEN: ${{ secrets.CF_TOKEN }}
   GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -55,7 +56,7 @@ jobs:
           key: work-sample-${{ github.run_id }}
           restore-keys: work-
       - name: Make the sample
-        run: python bot/sample.py "${{ github.event.inputs.kind }}" "${{ github.event.inputs.topic }}" "${{ github.event.inputs.link }}" "${{ github.event.inputs.first_episode }}"
+        run: python -u bot/sample.py "${{ github.event.inputs.kind }}" "${{ github.event.inputs.topic }}" "${{ github.event.inputs.link }}" "${{ github.event.inputs.first_episode }}"
       - name: Keep the sample video
         uses: actions/upload-artifact@v4
         with:
