@@ -9,8 +9,8 @@ on:
   workflow_dispatch:
     inputs:
       max_hours:
-        description: "Time budget for this run (hours, max 5)"
-        default: "4.5"
+        description: "Time budget for this run (hours, max 5.5)"
+        default: "5.3"
       selftest:
         description: "Self-test only (render a 25 s test video, upload nothing)"
         type: boolean
@@ -42,7 +42,7 @@ env:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 330
+    timeout-minutes: 355     # GitHub's maximum is 360; the bot works 5.3 h, the rest saves safely
     steps:
       - uses: actions/checkout@v4
         with:
@@ -73,7 +73,7 @@ jobs:
           elif [ "${{ github.event.inputs.selftest }}" = "true" ]; then
             python bot/run.py --selftest
           else
-            python bot/run.py --max-hours "${{ github.event.inputs.max_hours || '4.5' }}"
+            python bot/run.py --max-hours "${{ github.event.inputs.max_hours || '5.3' }}"
           fi
       - name: Self-repair (only after a crash; a fix is kept only if the self-test passes)
         if: failure() && steps.bot.outcome == 'failure'
