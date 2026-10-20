@@ -1,12 +1,12 @@
 # 🤖 Video bot status
-_Updated 20 Oct 2026, 02:46 AM IST by the bot._
+_Updated 20 Oct 2026, 06:46 AM IST by the bot._
 
 ## Targets
 | | Now | Target |
 |---|---|---|
-| Watch hours / day (28-day avg) | 1.32 | 10.0 |
-| New subscribers / day | -0.07 | 3.0 |
-| Watch hours, last 12 months (4,000 for monetization) | 326.6 | 4000 |
+| Watch hours / day (28-day avg) | 1.14 | 10.0 |
+| New subscribers / day | -0.11 | 3.0 |
+| Watch hours, last 12 months (4,000 for monetization) | 326.1 | 4000 |
 
 ## Series
 | Series | Language | Channel | Status | Written | Movie |
@@ -31,15 +31,15 @@ vishnu24, kalki07, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 462 / 1,900
-- YouTube quota today (Pacific): 8995 / 9,000
+- GitHub minutes this month: 471 / 1,900
+- YouTube quota today (Pacific): 8998 / 9,000
 
 ## This run
 ```
-20 Oct 02:36 AM IST] health ok | YouTube quota used today 8992 | GitHub minutes this month 451
-20 Oct 02:38 AM IST] focus: making the movie 'रक्तबीज बनाम महिषासुर: महाप्रलय' - other series are paused until it is uploaded
-20 Oct 02:38 AM IST] pictures for raktabee03
-20 Oct 02:38 AM IST] render raktabee03
-20 Oct 02:46 AM IST] stopping for now: voice service unavailable while rendering raktabee03 - continuing next run
-20 Oct 02:46 AM IST] stopping for now: YouTube quota: 8995 used today, need 50
+20 Oct 06:38 AM IST] health ok | YouTube quota used today 8995 | GitHub minutes this month 462
+20 Oct 06:38 AM IST] focus: making the movie 'रक्तबीज बनाम महिषासुर: महाप्रलय' - other series are paused until it is uploaded
+20 Oct 06:38 AM IST] pictures for raktabee03
+20 Oct 06:38 AM IST] render raktabee03
+20 Oct 06:46 AM IST] stopping for now: voice service unavailable while rendering raktabee03 - continuing next run
+20 Oct 06:46 AM IST] stopping for now: YouTube quota: 8998 used today, need 50
 ```
