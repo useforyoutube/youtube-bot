@@ -13,10 +13,8 @@ jobs:
         run: |
           for m in openai/gpt-4.1-mini openai/gpt-4.1 meta/llama-3.3-70b-instruct deepseek/deepseek-v3-0324; do
             echo "== $m"
-            curl -s -X POST https://models.github.ai/inference/chat/completions \
+            curl -s -o out.json -w "HTTP %{http_code}" -X POST https://models.github.ai/inference/chat/completions \
               -H "Authorization: Bearer $GH_TOKEN" -H "Content-Type: application/json" \
-              -d "{\"model\":\"$m\",\"messages\":[{\"role\":\"user\",\"content\":\"एक नाटकीय वाक्य में बताइए: महिषासुर कौन था?\"}],\"max_tokens\":120}" \
-              -w "
-HTTP %{http_code}
-" | head -c 700; echo
+              -d "{\"model\":\"$m\",\"messages\":[{\"role\":\"user\",\"content\":\"एक नाटकीय वाक्य में बताइए: महिषासुर कौन था?\"}],\"max_tokens\":120}"
+            echo; head -c 600 out.json; echo
           done
