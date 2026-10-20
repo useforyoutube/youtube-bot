@@ -109,7 +109,7 @@ jobs:
             git show origin/main:vault.enc > "$RUNNER_TEMP/remote.enc"
             python vault/boot.py adopt-code "$RUNNER_TEMP/remote.enc"
             python vault/boot.py seal
-            git reset -q --soft origin/main
+            git reset -q origin/main          # index = newest remote files; only vault + status are ours
             git add vault.enc STATUS.md
             git commit -q -m "bot: progress $(date -u +%F)"
             git push -q
