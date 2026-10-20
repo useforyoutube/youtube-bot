@@ -1,5 +1,5 @@
 # 🤖 Video bot status
-_Updated 20 Oct 2026, 09:29 PM IST by the bot._
+_Updated 20 Oct 2026, 09:49 PM IST by the bot._
 
 ## Targets
 | | Now | Target |
@@ -13,7 +13,7 @@ _Updated 20 Oct 2026, 09:29 PM IST by the bot._
 |---|---|---|---|---|---|
 | कल्कि | hi | main | active | 9/15 | ⏳ |
 | रक्तबीज बनाम महिषासुर: महाप्रलय | hi | main | done | 5/5 | ⏳ |
-| द वेल क्रैक्स: महाप्रलय | hi | main | active | 0/15 | – |
+| द वेल क्रैक्स: महाप्रलय | hi | main | active | 0/5 | – |
 
 ## Queue (next to make)
 vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05
@@ -32,16 +32,13 @@ vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 648 / 1,900
-- YouTube quota today (Pacific): 8866 / 9,000
+- GitHub minutes this month: 651 (public repo: no limit)
+- YouTube quota today (Pacific): 8866 / 9,800
 
 ## This run
 ```
-20 Oct 08:28 PM IST] health ok | YouTube quota used today 8766 | GitHub minutes this month 585
-20 Oct 08:28 PM IST] focus: making the movie 'रक्तबीज बनाम महिषासुर: महाप्रलय' - other series are paused until it is uploaded
-20 Oct 08:28 PM IST] pictures for raktabee05
-20 Oct 09:07 PM IST] render raktabee05
-20 Oct 09:28 PM IST] raktabee05 complete
-20 Oct 09:28 PM IST] queue worked through
-20 Oct 09:29 PM IST] stopping for now: YouTube quota: 8866 used today, need 1710
+20 Oct 09:47 PM IST] health ok | YouTube quota used today 8866 | GitHub minutes this month 648
+20 Oct 09:48 PM IST] focus: making the movie 'रक्तबीज बनाम महिषासुर: महाप्रलय' - other series are paused until it is uploaded
+20 Oct 09:48 PM IST] queue worked through
+20 Oct 09:49 PM IST] stopping for now: YouTube quota: 8866 used today, need 1710
 ```
