@@ -4,11 +4,17 @@ on:
   workflow_dispatch:
     inputs:
       kind:
-        description: "poem or story"
+        description: "poem, story or episode"
         default: "poem"
       topic:
-        description: "Character / moment / topic"
+        description: "Character / moment / topic (or the series name for an episode)"
         default: "कर्ण की पीड़ा - माँ कुंती से"
+      link:
+        description: "episode only: link to the existing episode / source"
+        default: ""
+      first_episode:
+        description: "episode only: number of the first new episode (2 if episode 1 exists)"
+        default: "1"
 
 concurrency:
   group: sample-video              # runs next to the daily bot; never saves anything
@@ -28,7 +34,7 @@ env:
 jobs:
   sample:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 150
     steps:
       - uses: actions/checkout@v4
         with:
@@ -49,10 +55,10 @@ jobs:
           key: work-sample-${{ github.run_id }}
           restore-keys: work-
       - name: Make the sample
-        run: python bot/sample.py "${{ github.event.inputs.kind }}" "${{ github.event.inputs.topic }}"
+        run: python bot/sample.py "${{ github.event.inputs.kind }}" "${{ github.event.inputs.topic }}" "${{ github.event.inputs.link }}" "${{ github.event.inputs.first_episode }}"
       - name: Keep the sample video
         uses: actions/upload-artifact@v4
         with:
           name: sample-video
-          path: work/sample/*.mp4
+          path: work/sample/*
           retention-days: 7
