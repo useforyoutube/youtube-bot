@@ -1,5 +1,5 @@
 # 🤖 Video bot status
-_Updated 21 Oct 2026, 06:28 PM IST by the bot._
+_Updated 21 Oct 2026, 10:30 PM IST by the bot._
 
 ## Targets
 | | Now | Target |
@@ -39,20 +39,20 @@ vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, theveil
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 964 (public repo: no limit)
-- YouTube quota today (Pacific): 8866 / 9,800
+- GitHub minutes this month: 979 (public repo: no limit)
+- YouTube quota today (Pacific): 8969 / 9,800
 
 ## This run
 ```
-21 Oct 06:18 PM IST] health ok | YouTube quota used today 8863 | GitHub minutes this month 952
-21 Oct 06:28 PM IST] writer: waiting for Gemini's free limit (gemini-3.8-flash: 429 {
+21 Oct 10:17 PM IST] health ok | YouTube quota used today 8866 | GitHub minutes this month 964
+21 Oct 10:30 PM IST] writer: waiting for Gemini's free limit (gemini-3.8-flash: 429 {
   "error": {
     "code": 429,
     "message": "You exceeded your current quot)
-21 Oct 06:28 PM IST] focus: making the movie 'द वेल क्रैक्स: महाप्रलय' - other series are paused until it is uploaded
-21 Oct 06:28 PM IST] pictures for theveilc02
-21 Oct 06:28 PM IST] metadata theveilc02
-21 Oct 06:28 PM IST] YouTube quota used up (YouTube quota: 8863 used today, need 1710) - rendering continues, uploads next run
-21 Oct 06:28 PM IST] queue worked through
-21 Oct 06:28 PM IST] movie problem (the run continues): CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.12.15/x64/bin/python', '-u', 'cine.py', 'raktabee01', '--meta-only', '--short', '0']' returned non-zero exit status 1.
+21 Oct 10:30 PM IST] focus: making the movie 'द वेल क्रैक्स: महाप्रलय' - other series are paused until it is uploaded
+21 Oct 10:30 PM IST] pictures for theveilc02
+21 Oct 10:30 PM IST] metadata theveilc02
+21 Oct 10:30 PM IST] YouTube quota used up (YouTube quota: 8866 used today, need 1710) - rendering continues, uploads next run
+21 Oct 10:30 PM IST] queue worked through
+21 Oct 10:30 PM IST] movie problem (the run continues): CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.12.15/x64/bin/python', '-u', 'cine.py', 'raktabee01', '--meta-only', '--short', '0']' returned non-zero exit status 1.
 ```
