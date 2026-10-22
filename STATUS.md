@@ -1,5 +1,5 @@
 # 🤖 Video bot status
-_Updated 22 Oct 2026, 06:43 AM IST by the bot._
+_Updated 22 Oct 2026, 01:59 PM IST by the bot._
 
 ## Targets
 | | Now | Target |
@@ -17,17 +17,17 @@ _Updated 22 Oct 2026, 06:43 AM IST by the bot._
 | द वेल क्रैक्स: महाप्रलय | hi | main | active | 3/5 | – |
 
 ## Queue (next to make)
-vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, theveilc02, theveilc03
+vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05
 
 ## Latest uploads
+- theveilc03_short2: https://youtu.be/sKulLgi10f0
+- theveilc03_short1: https://youtu.be/DOYGwFhe-AU
+- theveilc03: https://youtu.be/nQR212XxDAk
+- theveilc02_short2: https://youtu.be/rRZpzCb-Hx8
+- theveilc02_short1: https://youtu.be/kXwAgvpMzP0
 - theveilc02: https://youtu.be/5FxSnFOH0XI
 - theveilc01_short2: https://youtu.be/P46hzKvOCO4
 - theveilc01_short1: https://youtu.be/78KU_-9GlSQ
-- theveilc01: https://youtu.be/8wVGO5d79-E
-- raktabee_movie: https://youtu.be/ZbTD1sUqzXw
-- kalki08_short1: https://youtu.be/h_jdATUJfl0
-- kalki08: https://youtu.be/JW0mKPMVnfQ
-- kalki07_short1: https://youtu.be/t4s0av6V9Ac
 
 ## Titles the bot improved
 - कल्कि और पद्मावती का विवाह 💍 कैसे टूटा श्राप? | Kalki Avatar Full Story | Kalki Puran भाग 5 → **पद्मावती का श्राप कल्कि ने कैसे तोड़ा? 💍 Kalki Avatar Story | Kalki Puran भाग 5**
@@ -39,17 +39,25 @@ vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, theveil
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 991 (public repo: no limit)
-- YouTube quota today (Pacific): 8972 / 9,800
+- GitHub minutes this month: 1030 (public repo: no limit)
+- YouTube quota today (Pacific): 8308 / 9,800
 
 ## This run
 ```
-22 Oct 06:36 AM IST] health ok | YouTube quota used today 8969 | GitHub minutes this month 979
-22 Oct 06:38 AM IST] focus: making the movie 'द वेल क्रैक्स: महाप्रलय' - other series are paused until it is uploaded
-22 Oct 06:38 AM IST] pictures for theveilc02
-22 Oct 06:38 AM IST] metadata theveilc02
-22 Oct 06:38 AM IST] YouTube quota used up (YouTube quota: 8969 used today, need 1710) - rendering continues, uploads next run
-22 Oct 06:38 AM IST] queue worked through
-22 Oct 06:38 AM IST] movie problem (the run continues): CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.12.15/x64/bin/python', '-u', 'cine.py', 'raktabee01', '--meta-only', '--short', '0']' returned non-zero exit status 1.
-watchdog: stuck for 3 runs - self-repair started
+22 Oct 01:21 PM IST] health ok | YouTube quota used today 0 | GitHub minutes this month 991
+22 Oct 01:21 PM IST] focus: making the movie 'द वेल क्रैक्स: महाप्रलय' - other series are paused until it is uploaded
+22 Oct 01:21 PM IST] pictures for theveilc02
+22 Oct 01:21 PM IST] metadata theveilc02
+22 Oct 01:22 PM IST] metadata theveilc02
+22 Oct 01:22 PM IST] theveilc02 complete
+22 Oct 01:22 PM IST] pictures for theveilc03
+22 Oct 01:23 PM IST] render theveilc03
+22 Oct 01:52 PM IST] metadata theveilc03
+22 Oct 01:53 PM IST] render theveilc03_short1
+22 Oct 01:55 PM IST] metadata theveilc03
+22 Oct 01:56 PM IST] render theveilc03_short2
+22 Oct 01:59 PM IST] metadata theveilc03
+22 Oct 01:59 PM IST] theveilc03 complete
+22 Oct 01:59 PM IST] queue worked through
+22 Oct 01:59 PM IST] movie problem (the run continues): CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.12.15/x64/bin/python', '-u', 'cine.py', 'raktabee01', '--meta-only', '--short', '0']' returned non-zero exit status 1.
 ```
