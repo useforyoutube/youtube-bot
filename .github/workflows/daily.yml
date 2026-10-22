@@ -3,6 +3,7 @@ name: Daily video run
 on:
   schedule:
     - cron: "20 0 * * *"        # 05:50 IST: right after the free pictures reset (05:30 IST)
+    - cron: "0 1 * * 6"         # Saturday 06:30 IST: the weekly email check (owner's schedule)
     - cron: "5 7 * * *"         # 12:35 IST: right after the YouTube quota resets (12:30 IST, summer time)
     - cron: "15 8 * * *"        # 13:45 IST: after the quota reset in winter time (13:30 IST)
     - cron: "15 16 * * *"       # 21:45 IST: keeps rendering/uploading with whatever is left
