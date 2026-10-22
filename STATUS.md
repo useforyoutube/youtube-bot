@@ -1,5 +1,5 @@
 # 🤖 Video bot status
-_Updated 22 Oct 2026, 03:05 PM IST by the bot._
+_Updated 22 Oct 2026, 03:10 PM IST by the bot._
 
 ## Targets
 | | Now | Target |
@@ -39,19 +39,16 @@ vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, theveil
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 1094 (public repo: no limit)
-- YouTube quota today (Pacific): 8311 / 9,800
+- GitHub minutes this month: 1096 (public repo: no limit)
+- YouTube quota today (Pacific): 8314 / 9,800
 
 ## This run
 ```
-22 Oct 02:02 PM IST] health ok | YouTube quota used today 8308 | GitHub minutes this month 1030
-22 Oct 02:12 PM IST] focus: making the movie 'द वेल क्रैक्स: महाप्रलय' - other series are paused until it is uploaded
-22 Oct 02:12 PM IST] pictures for theveilc04
-22 Oct 02:35 PM IST] render theveilc04
-22 Oct 02:58 PM IST] metadata theveilc04
-22 Oct 02:58 PM IST] YouTube quota used up (YouTube quota: 8308 used today, need 1710) - rendering continues, uploads next run
-22 Oct 02:58 PM IST] render theveilc04_short1
-22 Oct 03:01 PM IST] render theveilc04_short2
-22 Oct 03:05 PM IST] queue worked through
-22 Oct 03:05 PM IST] movie problem (the run continues): CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.12.15/x64/bin/python', '-u', 'cine.py', 'raktabee01', '--meta-only', '--short', '0']' returned non-zero exit status 1.
+22 Oct 03:09 PM IST] health ok | YouTube quota used today 8311 | GitHub minutes this month 1094
+22 Oct 03:09 PM IST] focus: making the movie 'द वेल क्रैक्स: महाप्रलय' - other series are paused until it is uploaded
+22 Oct 03:09 PM IST] pictures for theveilc04
+22 Oct 03:09 PM IST] metadata theveilc04
+22 Oct 03:09 PM IST] YouTube quota used up (YouTube quota: 8311 used today, need 1710) - rendering continues, uploads next run
+22 Oct 03:09 PM IST] queue worked through
+22 Oct 03:09 PM IST] movie problem (the run continues): CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.12.15/x64/bin/python', '-u', 'cine.py', 'raktabee01', '--meta-only', '--short', '0']' returned non-zero exit status 1.
 ```
