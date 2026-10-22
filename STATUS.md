@@ -1,5 +1,5 @@
 # 🤖 Video bot status
-_Updated 22 Oct 2026, 01:59 PM IST by the bot._
+_Updated 22 Oct 2026, 03:05 PM IST by the bot._
 
 ## Targets
 | | Now | Target |
@@ -14,10 +14,10 @@ _Updated 22 Oct 2026, 01:59 PM IST by the bot._
 | ब्रह्मांडीय महायुद्ध: 24 अवतारों की गाथा | hi | main | next | 0/10 | ⏳ |
 | कल्कि | hi | main | active | 9/15 | ⏳ |
 | रक्तबीज बनाम महिषासुर: महाप्रलय | hi | main | done | 5/5 | ✅ |
-| द वेल क्रैक्स: महाप्रलय | hi | main | active | 3/5 | – |
+| द वेल क्रैक्स: महाप्रलय | hi | main | active | 5/5 | – |
 
 ## Queue (next to make)
-vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05
+vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, theveilc04, theveilc05
 
 ## Latest uploads
 - theveilc03_short2: https://youtu.be/sKulLgi10f0
@@ -39,25 +39,19 @@ vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 1030 (public repo: no limit)
-- YouTube quota today (Pacific): 8308 / 9,800
+- GitHub minutes this month: 1094 (public repo: no limit)
+- YouTube quota today (Pacific): 8311 / 9,800
 
 ## This run
 ```
-22 Oct 01:21 PM IST] health ok | YouTube quota used today 0 | GitHub minutes this month 991
-22 Oct 01:21 PM IST] focus: making the movie 'द वेल क्रैक्स: महाप्रलय' - other series are paused until it is uploaded
-22 Oct 01:21 PM IST] pictures for theveilc02
-22 Oct 01:21 PM IST] metadata theveilc02
-22 Oct 01:22 PM IST] metadata theveilc02
-22 Oct 01:22 PM IST] theveilc02 complete
-22 Oct 01:22 PM IST] pictures for theveilc03
-22 Oct 01:23 PM IST] render theveilc03
-22 Oct 01:52 PM IST] metadata theveilc03
-22 Oct 01:53 PM IST] render theveilc03_short1
-22 Oct 01:55 PM IST] metadata theveilc03
-22 Oct 01:56 PM IST] render theveilc03_short2
-22 Oct 01:59 PM IST] metadata theveilc03
-22 Oct 01:59 PM IST] theveilc03 complete
-22 Oct 01:59 PM IST] queue worked through
-22 Oct 01:59 PM IST] movie problem (the run continues): CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.12.15/x64/bin/python', '-u', 'cine.py', 'raktabee01', '--meta-only', '--short', '0']' returned non-zero exit status 1.
+22 Oct 02:02 PM IST] health ok | YouTube quota used today 8308 | GitHub minutes this month 1030
+22 Oct 02:12 PM IST] focus: making the movie 'द वेल क्रैक्स: महाप्रलय' - other series are paused until it is uploaded
+22 Oct 02:12 PM IST] pictures for theveilc04
+22 Oct 02:35 PM IST] render theveilc04
+22 Oct 02:58 PM IST] metadata theveilc04
+22 Oct 02:58 PM IST] YouTube quota used up (YouTube quota: 8308 used today, need 1710) - rendering continues, uploads next run
+22 Oct 02:58 PM IST] render theveilc04_short1
+22 Oct 03:01 PM IST] render theveilc04_short2
+22 Oct 03:05 PM IST] queue worked through
+22 Oct 03:05 PM IST] movie problem (the run continues): CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.12.15/x64/bin/python', '-u', 'cine.py', 'raktabee01', '--meta-only', '--short', '0']' returned non-zero exit status 1.
 ```
