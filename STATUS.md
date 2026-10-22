@@ -1,5 +1,5 @@
 # 🤖 Video bot status
-_Updated 22 Oct 2026, 03:10 PM IST by the bot._
+_Updated 22 Oct 2026, 11:36 PM IST by the bot._
 
 ## Targets
 | | Now | Target |
@@ -34,21 +34,25 @@ vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, theveil
 - महादेव ने कल्कि को दिए 3 दिव्य उपहार 🔱 #shorts #kalki #mahadev → **Kalki Avatar को महादेव ने क्या 3 दिव्य उपहार दिए? 🔱 #shorts**
 - परशुराम ने कल्कि से गुरु दक्षिणा में क्या माँगा? 🙏 #shorts #kalki #parashurama → **Kalki Avatar से परशुराम ने गुरु दक्षिणा में क्या माँगा? 😲 #shorts**
 - कोक-विकोक: वो असुर जो मरकर भी ज़िंदा हो जाते थे 😱 #shorts #kalki #kalkipuran → **कल्कि अवतार के वो असुर जो मरकर भी ज़िंदा हो जाते थे? 😱 #shorts #kalkiavatar**
+- इस राजकुमारी को देखते ही राजा स्त्री बन जाते थे 😱 #shorts #kalki #padmavati → **राजकुमारी को देखकर राजा स्त्री क्यों बने? 😱 Kalki Avatar #shorts**
+
+## Digital products (download, then upload to Gumroad)
+- 2026-10-22 [kids] **Trace and Learn ABC abc Numbers 1-20 Printable Tracing Workbook PDF** (73 pages) - [download](https://github.com/useforyoutube/youtube-bot/releases/download/products/2026-10-22-trace-learn-abc-abc-and-numbers-1-20.zip)
 
 ## Channels
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 1096 (public repo: no limit)
-- YouTube quota today (Pacific): 8314 / 9,800
+- GitHub minutes this month: 1175 (public repo: no limit)
+- YouTube quota today (Pacific): 8417 / 9,800
 
 ## This run
 ```
-22 Oct 03:09 PM IST] health ok | YouTube quota used today 8311 | GitHub minutes this month 1094
-22 Oct 03:09 PM IST] focus: making the movie 'द वेल क्रैक्स: महाप्रलय' - other series are paused until it is uploaded
-22 Oct 03:09 PM IST] pictures for theveilc04
-22 Oct 03:09 PM IST] metadata theveilc04
-22 Oct 03:09 PM IST] YouTube quota used up (YouTube quota: 8311 used today, need 1710) - rendering continues, uploads next run
-22 Oct 03:09 PM IST] queue worked through
-22 Oct 03:09 PM IST] movie problem (the run continues): CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.12.15/x64/bin/python', '-u', 'cine.py', 'raktabee01', '--meta-only', '--short', '0']' returned non-zero exit status 1.
+22 Oct 10:19 PM IST] health ok | YouTube quota used today 8314 | GitHub minutes this month 1096
+22 Oct 10:19 PM IST] focus: making the movie 'द वेल क्रैक्स: महाप्रलय' - other series are paused until it is uploaded
+22 Oct 10:19 PM IST] pictures for theveilc04
+22 Oct 10:19 PM IST] metadata theveilc04
+22 Oct 10:19 PM IST] YouTube quota used up (YouTube quota: 8314 used today, need 1710) - rendering continues, uploads next run
+22 Oct 10:19 PM IST] queue worked through
+22 Oct 10:19 PM IST] movie problem (the run continues): CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.12.15/x64/bin/python', '-u', 'cine.py', 'raktabee01', '--meta-only', '--short', '0']' returned non-zero exit status 1.
 ```
