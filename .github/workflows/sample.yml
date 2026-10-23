@@ -1,10 +1,12 @@
 name: Sample video (nothing uploaded)
 
 on:
+  push:                            # Claude / the owner: push samples/request.json to make a sample
+    paths: ["samples/request.json"]
   workflow_dispatch:
     inputs:
       kind:
-        description: "poem, story or episode"
+        description: "poem, song, promo, story or episode"
         default: "poem"
       topic:
         description: "Character / moment / topic (or the series name for an episode)"
@@ -21,7 +23,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: read
+  contents: write                  # only to put the sample on the 'samples' release page
 
 env:
   BOT_WORK: ${{ github.workspace }}/work
@@ -55,8 +57,36 @@ jobs:
           path: work
           key: work-sample-${{ github.run_id }}
           restore-keys: work-
+      - name: What to make
+        id: req
+        env:
+          EVENT: ${{ github.event_name }}
+          IN_KIND: ${{ github.event.inputs.kind }}
+          IN_TOPIC: ${{ github.event.inputs.topic }}
+          IN_LINK: ${{ github.event.inputs.link }}
+          IN_FIRST: ${{ github.event.inputs.first_episode }}
+        run: |
+          python - >> "$GITHUB_OUTPUT" <<'EOF'
+          import json, os
+          r = json.load(open("samples/request.json", encoding="utf-8")) if os.environ["EVENT"] == "push" else {}
+          for k, env, d in (("kind", "IN_KIND", "poem"), ("topic", "IN_TOPIC", ""), ("link", "IN_LINK", ""),
+                            ("first_episode", "IN_FIRST", "1")):
+              v = str(r.get(k) or os.environ.get(env) or d).replace("\n", " ")
+              print(f"{k}={v}")
+          EOF
       - name: Make the sample
-        run: python -u bot/sample.py "${{ github.event.inputs.kind }}" "${{ github.event.inputs.topic }}" "${{ github.event.inputs.link }}" "${{ github.event.inputs.first_episode }}"
+        env:
+          KIND: ${{ steps.req.outputs.kind }}
+          TOPIC: ${{ steps.req.outputs.topic }}
+          LINK: ${{ steps.req.outputs.link }}
+          FIRST: ${{ steps.req.outputs.first_episode }}
+        run: python -u bot/sample.py "$KIND" "$TOPIC" "$LINK" "$FIRST"
+      - name: Put the sample on a page anyone with the link can open
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view samples > /dev/null 2>&1 || gh release create samples --prerelease --title "Sample videos" --notes "Samples to look at - never uploaded to YouTube"
+          for f in work/sample/*; do gh release upload samples "$f" --clobber; done
       - name: Keep the sample video
         uses: actions/upload-artifact@v4
         with:
