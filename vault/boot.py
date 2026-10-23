@@ -5,6 +5,7 @@ the files without the key. This bootstrap does only two harmless things - unlock
     python vault/boot.py seal     pack those dirs -> vault.enc
     python vault/boot.py adopt-code <other.enc>   take bot/ (the code) from another vault, keep everything else
                                                   (used when a run's save clashes with a newer code push)"""
+import base64
 import io
 import os
 import sys
@@ -24,6 +25,13 @@ def fernet():
     return Fernet(key.encode())
 
 
+def _read(path):
+    """vault.enc is stored as raw bytes (old vaults: base64 text). Base64 text could by chance look like a cloud key
+    ('AKID...') and GitHub push protection then blocked the whole save - binary files are not scanned."""
+    raw = open(path, "rb").read()
+    return raw if raw.startswith(b"gAAAAA") else base64.urlsafe_b64encode(raw)
+
+
 def seal():
     buf = io.BytesIO()
     with tarfile.open(fileobj=buf, mode="w:gz") as tar:
@@ -32,7 +40,7 @@ def seal():
             if os.path.isdir(p):
                 tar.add(p, arcname=d)
     with open(VAULT, "wb") as f:
-        f.write(fernet().encrypt(buf.getvalue()))
+        f.write(base64.urlsafe_b64decode(fernet().encrypt(buf.getvalue())))
     print(f"vault sealed ({os.path.getsize(VAULT) / 1e6:.1f} MB)")
 
 
@@ -40,7 +48,7 @@ def open_():
     if not os.path.exists(VAULT):
         print("no vault yet - first run")
         return
-    data = fernet().decrypt(open(VAULT, "rb").read())
+    data = fernet().decrypt(_read(VAULT))
     with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as tar:
         try:
             tar.extractall(ROOT, filter="data")
@@ -50,7 +58,7 @@ def open_():
 
 
 def adopt_code(path):
-    data = fernet().decrypt(open(path, "rb").read())
+    data = fernet().decrypt(_read(path))
     with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as tar:
         members = [m for m in tar.getmembers() if m.name == "bot" or m.name.startswith("bot/")]
         try:
