@@ -8,11 +8,12 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: video-bot                # waits for a running video run: never two changes to the bot's state at once
+  group: mail-check               # own queue: in 'video-bot' it cancelled the waiting video runs (one pending max)
   cancel-in-progress: false
 
 permissions:
   contents: write
+  actions: read                   # to see whether a video run is working (then this run does nothing)
 
 env:
   BOT_WORK: ${{ github.workspace }}/work
@@ -68,3 +69,7 @@ jobs:
             git add vault.enc
             git commit -q -m "bot: mail $(date -u +%F)"
           done
+          git fetch -q origin main
+          if [ "$(git rev-list --count origin/main..HEAD)" != "0" ]; then
+            echo "SAVE FAILED: this run's progress could not be pushed"; exit 1
+          fi

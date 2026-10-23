@@ -99,3 +99,7 @@ jobs:
             git add vault.enc STATUS.md
             git commit -q -m "bot: progress $(date -u +%F)"
           done
+          git fetch -q origin main
+          if [ "$(git rev-list --count origin/main..HEAD)" != "0" ]; then
+            echo "SAVE FAILED: this run's progress could not be pushed"; exit 1
+          fi

@@ -78,7 +78,7 @@ jobs:
           fi
       - name: Self-repair (only after a crash; a fix is kept only if the self-test passes)
         if: failure() && steps.bot.outcome == 'failure'
-        timeout-minutes: 60
+        timeout-minutes: 150
         run: python bot/repair.py
       - name: Keep the self-test video for checking
         if: github.event.inputs.selftest == 'true'
@@ -116,6 +116,10 @@ jobs:
             git add vault.enc STATUS.md
             git commit -q -m "bot: progress $(date -u +%F)"
           done
+          git fetch -q origin main
+          if [ "$(git rev-list --count origin/main..HEAD)" != "0" ]; then
+            echo "SAVE FAILED: this run's progress could not be pushed"; exit 1
+          fi
       - name: Next run right away (a requested movie is still being made)
         if: always() && hashFiles('work/continue.flag') != ''
         run: gh workflow run daily.yml --ref main

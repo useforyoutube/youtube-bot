@@ -1,0 +1,40 @@
+name: Compact history (weekly)
+
+# The encrypted vault (several MB) is committed many times a day, and every old copy stays in the git history:
+# ~5 GB a month, and GitHub limits big repositories. Once a week this replaces the history with ONE commit of
+# the current files (code and data are all in that commit; nothing current is lost). It shares the 'video-bot'
+# queue, so it never runs during a video run; a run that pushes right after it rebuilds on top of it by itself.
+
+on:
+  schedule:
+    - cron: "40 21 * * 6"       # Sunday 03:10 IST - between the night run and the morning run
+  workflow_dispatch:
+
+concurrency:
+  group: video-bot
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  compact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - name: One commit with the current files, replacing the old history
+        run: |
+          git config user.name "video-bot"
+          git config user.email "video-bot@users.noreply.github.com"
+          git checkout -q --orphan compacted
+          git add -A
+          git commit -q -m "bot: history compacted $(date -u +%F) (current code and data, encrypted)"
+          for try in 1 2 3; do
+            git push -q --force origin compacted:main && break
+            sleep 20
+          done
+          echo "history compacted"

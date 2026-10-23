@@ -32,7 +32,21 @@ def _read(path):
     return raw if raw.startswith(b"gAAAAA") else base64.urlsafe_b64encode(raw)
 
 
+def undo_unfinished_repair():
+    """a self-repair / code-check edit that was never verified (the step was killed) is put back before sealing"""
+    p = os.path.join(os.environ.get("BOT_WORK", os.path.join(ROOT, "work")), "pending_restore.json")
+    if os.path.exists(p):
+        import json
+        for f, text in json.load(open(p, encoding="utf-8")).items():
+            open(os.path.join(ROOT, "bot", os.path.basename(f)), "w", encoding="utf-8", newline="\n").write(text)
+        os.remove(p)
+        print("an unverified code edit was put back before sealing")
+
+
 def seal():
+    if not (os.path.exists(os.path.join(ROOT, "bot", "run.py")) and os.path.isdir(os.path.join(ROOT, "state"))):
+        raise SystemExit("refusing to seal: the vault was not opened (bot/ or state/ missing) - the old vault stays")
+    undo_unfinished_repair()
     buf = io.BytesIO()
     with tarfile.open(fileobj=buf, mode="w:gz") as tar:
         for d in DIRS:
@@ -54,12 +68,42 @@ def open_():
             tar.extractall(ROOT, filter="data")
         except TypeError:
             tar.extractall(ROOT)
+    snapshot_state()
     print("vault opened")
+
+
+def _hash(path):
+    import hashlib
+    return hashlib.md5(open(path, "rb").read()).hexdigest()
+
+
+def snapshot_state():
+    """what state/ looked like when this run opened the vault (to merge a save clash file by file)"""
+    import json
+    snap = {}
+    for root, _, files in os.walk(os.path.join(ROOT, "state")):
+        for f in files:
+            p = os.path.join(root, f)
+            snap[os.path.relpath(p, ROOT).replace("\\", "/")] = _hash(p)
+    w = os.environ.get("BOT_WORK", os.path.join(ROOT, "work"))
+    os.makedirs(w, exist_ok=True)
+    json.dump(snap, open(os.path.join(w, "state_snapshot.json"), "w"))
 
 
 def adopt_code(path):
     data = fernet().decrypt(_read(path))
     with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as tar:
+        import json
+        snap_p = os.path.join(os.environ.get("BOT_WORK", os.path.join(ROOT, "work")), "state_snapshot.json")
+        snap = json.load(open(snap_p)) if os.path.exists(snap_p) else {}
+        unchanged = [m for m in tar.getmembers() if m.isfile() and m.name.startswith("state/") and (
+            m.name not in snap or (os.path.exists(os.path.join(ROOT, m.name)) and
+                                   _hash(os.path.join(ROOT, m.name)) == snap[m.name]))]
+        try:                                           # files this run did not change: take the newer remote copy
+            tar.extractall(ROOT, members=unchanged, filter="data")
+        except TypeError:
+            tar.extractall(ROOT, members=unchanged)
+        print(f"kept {len(unchanged)} newer state files from the other run")
         members = [m for m in tar.getmembers() if m.name == "bot" or m.name.startswith("bot/")]
         if members:                                    # files removed upstream must go too
             import shutil
