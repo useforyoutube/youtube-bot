@@ -1,12 +1,12 @@
 # 🤖 Video bot status
-_Updated 22 Oct 2026, 11:36 PM IST by the bot._
+_Updated 23 Oct 2026, 06:40 AM IST by the bot._
 
 ## Targets
 | | Now | Target |
 |---|---|---|
-| Watch hours / day (28-day avg) | 1.06 | 10.0 |
-| New subscribers / day | -0.07 | 3.0 |
-| Watch hours, last 12 months (4,000 for monetization) | 322.1 | 4000 |
+| Watch hours / day (28-day avg) | 0.71 | 10.0 |
+| New subscribers / day | -0.04 | 3.0 |
+| Watch hours, last 12 months (4,000 for monetization) | 322.8 | 4000 |
 
 ## Series
 | Series | Language | Channel | Status | Written | Movie |
@@ -36,23 +36,20 @@ vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, theveil
 - कोक-विकोक: वो असुर जो मरकर भी ज़िंदा हो जाते थे 😱 #shorts #kalki #kalkipuran → **कल्कि अवतार के वो असुर जो मरकर भी ज़िंदा हो जाते थे? 😱 #shorts #kalkiavatar**
 - इस राजकुमारी को देखते ही राजा स्त्री बन जाते थे 😱 #shorts #kalki #padmavati → **राजकुमारी को देखकर राजा स्त्री क्यों बने? 😱 Kalki Avatar #shorts**
 
-## Digital products (download, then upload to Gumroad)
-- 2026-10-22 [kids] **Trace and Learn ABC abc Numbers 1-20 Printable Tracing Workbook PDF** (73 pages) - [download](https://github.com/useforyoutube/youtube-bot/releases/download/products/2026-10-22-trace-learn-abc-abc-and-numbers-1-20.zip)
-
 ## Channels
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 1175 (public repo: no limit)
-- YouTube quota today (Pacific): 8417 / 9,800
+- GitHub minutes this month: 1177 (public repo: no limit)
+- YouTube quota today (Pacific): 8420 / 9,800
 
 ## This run
 ```
-22 Oct 10:19 PM IST] health ok | YouTube quota used today 8314 | GitHub minutes this month 1096
-22 Oct 10:19 PM IST] focus: making the movie 'द वेल क्रैक्स: महाप्रलय' - other series are paused until it is uploaded
-22 Oct 10:19 PM IST] pictures for theveilc04
-22 Oct 10:19 PM IST] metadata theveilc04
-22 Oct 10:19 PM IST] YouTube quota used up (YouTube quota: 8314 used today, need 1710) - rendering continues, uploads next run
-22 Oct 10:19 PM IST] queue worked through
-22 Oct 10:19 PM IST] movie problem (the run continues): CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.12.15/x64/bin/python', '-u', 'cine.py', 'raktabee01', '--meta-only', '--short', '0']' returned non-zero exit status 1.
+23 Oct 06:40 AM IST] health ok | YouTube quota used today 8417 | GitHub minutes this month 1175
+23 Oct 06:40 AM IST] focus: making the movie 'द वेल क्रैक्स: महाप्रलय' - other series are paused until it is uploaded
+23 Oct 06:40 AM IST] pictures for theveilc04
+23 Oct 06:40 AM IST] metadata theveilc04
+23 Oct 06:40 AM IST] YouTube quota used up (YouTube quota: 8417 used today, need 1710) - rendering continues, uploads next run
+23 Oct 06:40 AM IST] queue worked through
+23 Oct 06:40 AM IST] movie problem (the run continues): JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 ```
