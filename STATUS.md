@@ -1,5 +1,5 @@
 # 🤖 Video bot status
-_Updated 23 Oct 2026, 03:21 PM IST by the bot._
+_Updated 23 Oct 2026, 07:20 PM IST by the bot._
 
 ## Targets
 | | Now | Target |
@@ -13,11 +13,12 @@ _Updated 23 Oct 2026, 03:21 PM IST by the bot._
 |---|---|---|---|---|---|
 | ब्रह्मांडीय महायुद्ध: 24 अवतारों की गाथा | hi | main | next | 0/10 | ⏳ |
 | कल्कि | hi | main | active | 9/15 | ⏳ |
+| कलि संहार: कल्कि अवतार और महायुद्ध | hi | main | active | 5/5 | ⏳ |
 | रक्तबीज बनाम महिषासुर: महाप्रलय | hi | main | done | 5/5 | ✅ |
-| द वेल क्रैक्स: महाप्रलय | hi | main | active | 5/5 | – |
+| द वेल क्रैक्स: महाप्रलय | hi | main | done | 5/5 | – |
 
 ## Queue (next to make)
-vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, theveilc05
+vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, theveilc05, kalkisan03, kalkisan04, kalkisan05
 
 ## Latest uploads
 - theveilc05_short1: https://youtu.be/vCpdFYDhgEw
@@ -40,31 +41,31 @@ vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, theveil
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 1299 (public repo: no limit)
-- YouTube quota today (Pacific): 8558 / 9,800
+- GitHub minutes this month: 1537 (public repo: no limit)
+- YouTube quota today (Pacific): 8761 / 9,800
 
 ## This run
 ```
-23 Oct 01:20 PM IST] self-check found broken behaviour - self-repair started
-23 Oct 01:56 PM IST] self-check still failing - the run goes on, repair tries again later
-23 Oct 01:56 PM IST] health ok | YouTube quota used today 0 | GitHub minutes this month 1177
-23 Oct 01:56 PM IST] focus: making the movie 'द वेल क्रैक्स: महाप्रलय' - other series are paused until it is uploaded
-23 Oct 01:56 PM IST] pictures for theveilc04
-23 Oct 01:56 PM IST] metadata theveilc04
-23 Oct 01:56 PM IST] metadata theveilc04
-23 Oct 01:57 PM IST] metadata theveilc04
-23 Oct 01:57 PM IST] theveilc04 complete
-23 Oct 01:57 PM IST] pictures for theveilc05
-23 Oct 01:58 PM IST] render theveilc05
-23 Oct 02:29 PM IST] theveilc05: the video reviewer fixed picture 'arav_severing_slash' made again - rendering once more
-23 Oct 02:29 PM IST] pictures for theveilc05
-23 Oct 02:29 PM IST] render theveilc05
-23 Oct 02:55 PM IST] metadata theveilc05
-23 Oct 02:56 PM IST] render theveilc05_short1
-23 Oct 03:01 PM IST] metadata theveilc05
-23 Oct 03:01 PM IST] render theveilc05_short2
-23 Oct 03:09 PM IST] metadata theveilc05
-23 Oct 03:09 PM IST] YouTube quota used up (YouTube quota: 8355 used today, need 1710) - rendering continues, uploads next run
-23 Oct 03:09 PM IST] queue worked through
-23 Oct 03:09 PM IST] movie problem (the run continues): JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+23 Oct 03:23 PM IST] self-check found broken behaviour - self-repair started
+23 Oct 03:33 PM IST] self-check still failing - the run goes on, repair tries again later
+23 Oct 03:33 PM IST] health ok | YouTube quota used today 8558 | GitHub minutes this month 1299
+23 Oct 03:33 PM IST] YouTube quota used up - remaining finished videos upload next run
+23 Oct 04:58 PM IST] pictures for vishnu24
+23 Oct 04:58 PM IST] pictures for kalki08
+23 Oct 04:58 PM IST] pictures for theveilc05
+23 Oct 04:58 PM IST] pictures for kalkisan01
+23 Oct 04:59 PM IST] render kalkisan01
+23 Oct 05:30 PM IST] kalkisan01: the video reviewer fixed picture 'vishnu_sheshnag' made again; picture 'brahma' made again; face in 'vy_face' stays still - rendering once more
+23 Oct 05:30 PM IST] pictures for kalkisan01
+23 Oct 05:30 PM IST] render kalkisan01
+23 Oct 06:00 PM IST] kalkisan01 complete
+23 Oct 06:00 PM IST] pictures for kalkisan02
+23 Oct 06:00 PM IST] render kalkisan02
+23 Oct 06:27 PM IST] kalkisan02: the video reviewer fixed face in 'ratnamaru_sword_given' stays still; picture 'kalki_mounts_devadatta' made again; face in 'righteous_warriors_assembly' stays still - rendering once more
+23 Oct 06:27 PM IST] pictures for kalkisan02
+23 Oct 06:27 PM IST] render kalkisan02
+23 Oct 06:52 PM IST] kalkisan02 complete
+23 Oct 06:52 PM IST] pictures for kalkisan03
+23 Oct 07:20 PM IST] stopping for now: not enough time left for a render - continuing next run
+23 Oct 07:20 PM IST] movie problem (the run continues): JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 ```
