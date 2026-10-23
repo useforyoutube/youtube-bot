@@ -1,5 +1,5 @@
 # 🤖 Video bot status
-_Updated 23 Oct 2026, 06:40 AM IST by the bot._
+_Updated 23 Oct 2026, 03:21 PM IST by the bot._
 
 ## Targets
 | | Now | Target |
@@ -17,39 +17,54 @@ _Updated 23 Oct 2026, 06:40 AM IST by the bot._
 | द वेल क्रैक्स: महाप्रलय | hi | main | active | 5/5 | – |
 
 ## Queue (next to make)
-vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, theveilc04, theveilc05
+vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, theveilc05
 
 ## Latest uploads
+- theveilc05_short1: https://youtu.be/vCpdFYDhgEw
+- theveilc05: https://youtu.be/WXK3JtNUnL0
+- theveilc04_short2: https://youtu.be/FSaDlSdD4Ts
+- theveilc04_short1: https://youtu.be/D1AvfZl8Akg
+- theveilc04: https://youtu.be/SOz2vNaRmOs
 - theveilc03_short2: https://youtu.be/sKulLgi10f0
 - theveilc03_short1: https://youtu.be/DOYGwFhe-AU
 - theveilc03: https://youtu.be/nQR212XxDAk
-- theveilc02_short2: https://youtu.be/rRZpzCb-Hx8
-- theveilc02_short1: https://youtu.be/kXwAgvpMzP0
-- theveilc02: https://youtu.be/5FxSnFOH0XI
-- theveilc01_short2: https://youtu.be/P46hzKvOCO4
-- theveilc01_short1: https://youtu.be/78KU_-9GlSQ
 
 ## Titles the bot improved
-- कल्कि और पद्मावती का विवाह 💍 कैसे टूटा श्राप? | Kalki Avatar Full Story | Kalki Puran भाग 5 → **पद्मावती का श्राप कल्कि ने कैसे तोड़ा? 💍 Kalki Avatar Story | Kalki Puran भाग 5**
-- महादेव ने कल्कि को दिए 3 दिव्य उपहार 🔱 #shorts #kalki #mahadev → **Kalki Avatar को महादेव ने क्या 3 दिव्य उपहार दिए? 🔱 #shorts**
 - परशुराम ने कल्कि से गुरु दक्षिणा में क्या माँगा? 🙏 #shorts #kalki #parashurama → **Kalki Avatar से परशुराम ने गुरु दक्षिणा में क्या माँगा? 😲 #shorts**
 - कोक-विकोक: वो असुर जो मरकर भी ज़िंदा हो जाते थे 😱 #shorts #kalki #kalkipuran → **कल्कि अवतार के वो असुर जो मरकर भी ज़िंदा हो जाते थे? 😱 #shorts #kalkiavatar**
 - इस राजकुमारी को देखते ही राजा स्त्री बन जाते थे 😱 #shorts #kalki #padmavati → **राजकुमारी को देखकर राजा स्त्री क्यों बने? 😱 Kalki Avatar #shorts**
+- कल्कि के तोते शुक पर असुर बाज़ का हमला! 🦅 #shorts #kalki #kalkiavatar → **क्या कल्कि के तोते शुक की जान बची? 🦅 Kalki Avatar Story #shorts**
+- काली विद्या के राक्षस vs कल्कि का आग्नेयास्त्र 🔥 #shorts #kalki #kalkiavatar → **क्या कल्कि अवतार का आग्नेयास्त्र काली विद्या का अंत करेगा? 🔥 #shorts**
 
 ## Channels
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 1177 (public repo: no limit)
-- YouTube quota today (Pacific): 8420 / 9,800
+- GitHub minutes this month: 1299 (public repo: no limit)
+- YouTube quota today (Pacific): 8558 / 9,800
 
 ## This run
 ```
-23 Oct 06:40 AM IST] health ok | YouTube quota used today 8417 | GitHub minutes this month 1175
-23 Oct 06:40 AM IST] focus: making the movie 'द वेल क्रैक्स: महाप्रलय' - other series are paused until it is uploaded
-23 Oct 06:40 AM IST] pictures for theveilc04
-23 Oct 06:40 AM IST] metadata theveilc04
-23 Oct 06:40 AM IST] YouTube quota used up (YouTube quota: 8417 used today, need 1710) - rendering continues, uploads next run
-23 Oct 06:40 AM IST] queue worked through
-23 Oct 06:40 AM IST] movie problem (the run continues): JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+23 Oct 01:20 PM IST] self-check found broken behaviour - self-repair started
+23 Oct 01:56 PM IST] self-check still failing - the run goes on, repair tries again later
+23 Oct 01:56 PM IST] health ok | YouTube quota used today 0 | GitHub minutes this month 1177
+23 Oct 01:56 PM IST] focus: making the movie 'द वेल क्रैक्स: महाप्रलय' - other series are paused until it is uploaded
+23 Oct 01:56 PM IST] pictures for theveilc04
+23 Oct 01:56 PM IST] metadata theveilc04
+23 Oct 01:56 PM IST] metadata theveilc04
+23 Oct 01:57 PM IST] metadata theveilc04
+23 Oct 01:57 PM IST] theveilc04 complete
+23 Oct 01:57 PM IST] pictures for theveilc05
+23 Oct 01:58 PM IST] render theveilc05
+23 Oct 02:29 PM IST] theveilc05: the video reviewer fixed picture 'arav_severing_slash' made again - rendering once more
+23 Oct 02:29 PM IST] pictures for theveilc05
+23 Oct 02:29 PM IST] render theveilc05
+23 Oct 02:55 PM IST] metadata theveilc05
+23 Oct 02:56 PM IST] render theveilc05_short1
+23 Oct 03:01 PM IST] metadata theveilc05
+23 Oct 03:01 PM IST] render theveilc05_short2
+23 Oct 03:09 PM IST] metadata theveilc05
+23 Oct 03:09 PM IST] YouTube quota used up (YouTube quota: 8355 used today, need 1710) - rendering continues, uploads next run
+23 Oct 03:09 PM IST] queue worked through
+23 Oct 03:09 PM IST] movie problem (the run continues): JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 ```
