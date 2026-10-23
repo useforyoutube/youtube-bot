@@ -78,6 +78,7 @@ jobs:
           fi
       - name: Self-repair (only after a crash; a fix is kept only if the self-test passes)
         if: failure() && steps.bot.outcome == 'failure'
+        timeout-minutes: 60
         run: python bot/repair.py
       - name: Keep the self-test video for checking
         if: github.event.inputs.selftest == 'true'
@@ -105,7 +106,8 @@ jobs:
           git config user.email "video-bot@users.noreply.github.com"
           git add vault.enc STATUS.md
           git diff --cached --quiet || git commit -q -m "bot: progress $(date -u +%F)"
-          if ! git push -q; then      # code was pushed meanwhile: keep this run's progress + the newer code
+          for try in 1 2 3; do        # code was pushed meanwhile: keep this run's progress + the newer code
+            git push -q && break
             git fetch -q origin main
             git show origin/main:vault.enc > "$RUNNER_TEMP/remote.enc"
             python vault/boot.py adopt-code "$RUNNER_TEMP/remote.enc"
@@ -113,8 +115,7 @@ jobs:
             git reset -q origin/main          # index = newest remote files; only vault + status are ours
             git add vault.enc STATUS.md
             git commit -q -m "bot: progress $(date -u +%F)"
-            git push -q
-          fi
+          done
       - name: Next run right away (a requested movie is still being made)
         if: always() && hashFiles('work/continue.flag') != ''
         run: gh workflow run daily.yml --ref main

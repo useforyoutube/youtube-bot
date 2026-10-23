@@ -28,6 +28,8 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main                 # newest code even when this run waited behind another run
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -43,4 +45,13 @@ jobs:
           git config user.email "video-bot@users.noreply.github.com"
           git add vault.enc
           git diff --cached --quiet || git commit -q -m "bot: channel connected"
-          git push -q || (git pull -q --rebase && git push -q)
+          for try in 1 2 3; do        # code was pushed meanwhile: keep this run's progress + the newer code
+            git push -q && break
+            git fetch -q origin main
+            git show origin/main:vault.enc > "$RUNNER_TEMP/remote.enc"
+            python vault/boot.py adopt-code "$RUNNER_TEMP/remote.enc"
+            python vault/boot.py seal
+            git reset -q origin/main          # index = newest remote files; only vault + status are ours
+            git add vault.enc
+            git commit -q -m "bot: progress $(date -u +%F)"
+          done

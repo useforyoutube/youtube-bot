@@ -61,6 +61,9 @@ def adopt_code(path):
     data = fernet().decrypt(_read(path))
     with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as tar:
         members = [m for m in tar.getmembers() if m.name == "bot" or m.name.startswith("bot/")]
+        if members:                                    # files removed upstream must go too
+            import shutil
+            shutil.rmtree(os.path.join(ROOT, "bot"), ignore_errors=True)
         try:
             tar.extractall(ROOT, members=members, filter="data")
         except TypeError:
