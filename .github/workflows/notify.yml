@@ -1,0 +1,39 @@
+name: Email the owner (samples / guide)
+
+on:
+  push:
+    paths: ["samples/notify.json"]     # Claude / the owner: push it to send the emails at once
+  workflow_dispatch:
+
+concurrency:
+  group: notify                    # read-only: it never changes the bot's state, so it need not wait for video runs
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  BOT_WORK: ${{ github.workspace }}/work
+  REPO_KEY: ${{ secrets.REPO_KEY }}
+  YT_TOKEN: ${{ secrets.YT_TOKEN }}
+  BOT_KEY: ${{ secrets.BOT_KEY }}
+  GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+  GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Unlock the bot
+        run: pip install -q cryptography && python vault/boot.py open
+      - run: pip install -q -r requirements.txt
+      - name: Send the emails
+        run: python -u bot/notify.py
