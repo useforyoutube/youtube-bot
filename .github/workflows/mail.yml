@@ -1,0 +1,70 @@
+name: Mail check (sponsorship replies + deals)
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"      # every 30 minutes: brand replies and the owner's deal emails handled quickly
+  push:
+    paths: ["samples/mail_now.json"]   # Claude / the owner: push it to run this at once
+  workflow_dispatch:
+
+concurrency:
+  group: video-bot                # waits for a running video run: never two changes to the bot's state at once
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+env:
+  BOT_WORK: ${{ github.workspace }}/work
+  REPO_KEY: ${{ secrets.REPO_KEY }}
+  YT_TOKEN: ${{ secrets.YT_TOKEN }}
+  BOT_KEY: ${{ secrets.BOT_KEY }}
+  CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+  CF_TOKEN: ${{ secrets.CF_TOKEN }}
+  GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+  GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+  GH_TOKEN: ${{ github.token }}
+
+jobs:
+  mail:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75            # a sponsored Short can be made here (pictures + render ~20 min)
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Fonts for Indian scripts
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-core libraqm0 libfribidi0 > /dev/null
+      - name: Unlock the bot
+        run: pip install -q cryptography && python vault/boot.py open
+      - run: pip install -q -r requirements.txt
+      - name: Music and pictures from the work cache (read only)
+        uses: actions/cache/restore@v4
+        with:
+          path: work
+          key: work-mail-${{ github.run_id }}
+          restore-keys: work-
+      - name: Sponsorship replies, deal emails, approved deals
+        run: rm -f work/changed.flag && python -u bot/mail_now.py
+      - name: Lock the bot and save (only when something changed)
+        if: always() && hashFiles('work/changed.flag') != ''
+        run: |
+          python vault/boot.py seal
+          git config user.name "video-bot"
+          git config user.email "video-bot@users.noreply.github.com"
+          git add vault.enc
+          git diff --cached --quiet || git commit -q -m "bot: mail $(date -u +%F)"
+          for try in 1 2 3; do        # code was pushed meanwhile: keep this run's progress + the newer code
+            git push -q && break
+            git fetch -q origin main
+            git show origin/main:vault.enc > "$RUNNER_TEMP/remote.enc"
+            python vault/boot.py adopt-code "$RUNNER_TEMP/remote.enc"
+            python vault/boot.py seal
+            git reset -q origin/main
+            git add vault.enc
+            git commit -q -m "bot: mail $(date -u +%F)"
+          done
