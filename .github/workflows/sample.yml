@@ -30,6 +30,7 @@ permissions:
 env:
   BOT_WORK: ${{ github.workspace }}/work
   REPO_KEY: ${{ secrets.REPO_KEY }}
+  GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
   BOT_KEY: ${{ secrets.BOT_KEY }}
   YT_TOKEN: ${{ secrets.YT_TOKEN }}           # read only here: the sample job never uploads
   CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
@@ -103,6 +104,9 @@ jobs:
           gh release view samples > /dev/null 2>&1 || gh release create samples --prerelease --title "Sample videos" --notes "Samples to look at - never uploaded to YouTube"
           for f in work/sample/*; do gh release upload samples "$f" --clobber; done
           echo made > "work/${{ steps.req.outputs.mark }}" && gh release upload samples "work/${{ steps.req.outputs.mark }}" --clobber
+      - name: Email the owner the links
+        if: steps.req.outputs.skip != 'true'
+        run: python -u bot/sample_mail.py
       - name: Keep the sample video
         if: steps.req.outputs.skip != 'true'
         uses: actions/upload-artifact@v4
