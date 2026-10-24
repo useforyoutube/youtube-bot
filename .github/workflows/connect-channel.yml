@@ -10,7 +10,7 @@ on:
         options: [main, channel2, channel3, channel4, channel5]
 
 concurrency:
-  group: video-bot
+  group: connect-channel               # own queue: a waiting video run used to cancel it
   cancel-in-progress: false
 
 permissions:

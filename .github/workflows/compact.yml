@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: video-bot
+  group: compact               # own queue: a waiting video run used to cancel it
   cancel-in-progress: false
 
 permissions:
@@ -30,11 +30,12 @@ jobs:
         run: |
           git config user.name "video-bot"
           git config user.email "video-bot@users.noreply.github.com"
+          BASE=$(git rev-parse HEAD)            # only replace main if nothing was pushed meanwhile
           git checkout -q --orphan compacted
           git add -A
           git commit -q -m "bot: history compacted $(date -u +%F) (current code and data, encrypted)"
           for try in 1 2 3; do
-            git push -q --force origin compacted:main && break
-            sleep 20
+            git push -q --force-with-lease=main:$BASE origin compacted:main && break
+            echo "main moved meanwhile - compaction skipped this week (nothing lost)"; break
           done
           echo "history compacted"
