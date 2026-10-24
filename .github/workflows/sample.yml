@@ -3,6 +3,8 @@ name: Sample video (nothing uploaded)
 on:
   push:                            # Claude / the owner: push samples/request.json to make a sample
     paths: ["samples/request.json"]
+  schedule:
+    - cron: "40 7 * * *"           # 1:10 PM IST, after Gemini's daily reset: a sample marked "retry" is made then
   workflow_dispatch:
     inputs:
       kind:
@@ -62,6 +64,7 @@ jobs:
       - name: What to make
         id: req
         env:
+          GH_TOKEN: ${{ github.token }}
           EVENT: ${{ github.event_name }}
           IN_KIND: ${{ github.event.inputs.kind }}
           IN_TOPIC: ${{ github.event.inputs.topic }}
@@ -69,14 +72,23 @@ jobs:
           IN_FIRST: ${{ github.event.inputs.first_episode }}
         run: |
           python - >> "$GITHUB_OUTPUT" <<'EOF'
-          import json, os
-          r = json.load(open("samples/request.json", encoding="utf-8")) if os.environ["EVENT"] == "push" else {}
+          import datetime, json, os, subprocess
+          ev = os.environ["EVENT"]
+          r = json.load(open("samples/request.json", encoding="utf-8")) if ev in ("push", "schedule") else {}
+          mark = "done_" + "".join(c for c in str(r.get("asked", "")) if c.isalnum())[:40] + ".txt"
+          now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+          made = mark in subprocess.run(["gh", "release", "view", "samples", "--json", "assets", "--jq",
+                                         ".assets[].name"], capture_output=True, text=True).stdout.split()
+          skip = (ev == "schedule" and (not r.get("retry") or made)) or (str(r.get("not_before", "")) > now)
+          print(f"skip={'true' if skip else 'false'}")
+          print(f"mark={mark}")
           for k, env, d in (("kind", "IN_KIND", "poem"), ("topic", "IN_TOPIC", ""), ("link", "IN_LINK", ""),
                             ("first_episode", "IN_FIRST", "1")):
               v = str(r.get(k) or os.environ.get(env) or d).replace("\n", " ")
               print(f"{k}={v}")
           EOF
       - name: Make the sample
+        if: steps.req.outputs.skip != 'true'
         env:
           KIND: ${{ steps.req.outputs.kind }}
           TOPIC: ${{ steps.req.outputs.topic }}
@@ -84,12 +96,15 @@ jobs:
           FIRST: ${{ steps.req.outputs.first_episode }}
         run: python -u bot/sample.py "$KIND" "$TOPIC" "$LINK" "$FIRST"
       - name: Put the sample on a page anyone with the link can open
+        if: steps.req.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release view samples > /dev/null 2>&1 || gh release create samples --prerelease --title "Sample videos" --notes "Samples to look at - never uploaded to YouTube"
           for f in work/sample/*; do gh release upload samples "$f" --clobber; done
+          echo made > "work/${{ steps.req.outputs.mark }}" && gh release upload samples "work/${{ steps.req.outputs.mark }}" --clobber
       - name: Keep the sample video
+        if: steps.req.outputs.skip != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: sample-video
