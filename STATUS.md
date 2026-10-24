@@ -1,12 +1,12 @@
 # 🤖 Video bot status
-_Updated 23 Oct 2026, 10:35 PM IST by the bot._
+_Updated 24 Oct 2026, 10:42 PM IST by the bot._
 
 ## Targets
 | | Now | Target |
 |---|---|---|
-| Watch hours / day (28-day avg) | 0.71 | 10.0 |
-| New subscribers / day | -0.04 | 3.0 |
-| Watch hours, last 12 months (4,000 for monetization) | 322.8 | 4000 |
+| Watch hours / day (28-day avg) | 0.91 | 10.0 |
+| New subscribers / day | 0.04 | 3.0 |
+| Watch hours, last 12 months (4,000 for monetization) | 328.5 | 4000 |
 
 ## Series
 | Series | Language | Channel | Status | Written | Movie |
@@ -18,7 +18,7 @@ _Updated 23 Oct 2026, 10:35 PM IST by the bot._
 | द वेल क्रैक्स: महाप्रलय | hi | main | done | 5/5 | – |
 
 ## Queue (next to make)
-vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, theveilc05, kalkisan03, kalkisan04, kalkisan05
+short_poemanguish_1, vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, theveilc05
 
 ## Latest uploads
 - theveilc05_short1: https://youtu.be/vCpdFYDhgEw
@@ -41,19 +41,24 @@ vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, theveil
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 1555 (public repo: no limit)
-- YouTube quota today (Pacific): 8814 / 9,800
+- GitHub minutes this month: 1787 (public repo: no limit)
+- YouTube quota today (Pacific): 10000 / 9,800
 
 ## This run
 ```
-23 Oct 10:18 PM IST] health ok | YouTube quota used today 8761 | GitHub minutes this month 1537
-23 Oct 10:18 PM IST] YouTube quota used up - remaining finished videos upload next run
-23 Oct 10:18 PM IST] pictures for vishnu24
-23 Oct 10:18 PM IST] pictures for kalki08
-23 Oct 10:18 PM IST] pictures for theveilc05
-23 Oct 10:18 PM IST] render theveilc05_short2
-23 Oct 10:26 PM IST] pictures for kalkisan03
-23 Oct 10:26 PM IST] render kalkisan03
-23 Oct 10:35 PM IST] stopping for now: voice service unavailable while rendering kalkisan03 - continuing next run
-23 Oct 10:35 PM IST] movie problem (the run continues): JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+24 Oct 10:14 PM IST] health ok | YouTube quota used today 10000 | GitHub minutes this month 1758
+24 Oct 10:14 PM IST] YouTube quota used up - remaining finished videos upload next run
+24 Oct 10:37 PM IST] pictures for short_poemanguish_1
+24 Oct 10:37 PM IST] render short_poemanguish_1_short1
+24 Oct 10:41 PM IST] pictures for vishnu24
+24 Oct 10:41 PM IST] pictures for kalki08
+24 Oct 10:41 PM IST] pictures for theveilc05
+24 Oct 10:41 PM IST] queue worked through
+24 Oct 10:41 PM IST] movie: stopping for now: YouTube quota: 10000 used today, need 1
+24 Oct 10:41 PM IST] improve: stopping for now: YouTube quota: 10000 used today, need 1
+24 Oct 10:41 PM IST] backup Shorts: waiting for Gemini's free limit (gemini-3.6-flash: 429 GenerateRequestsPerDayPerProjectPerModel-FreeTier (retry in 49684s) | gemini-3)
+24 Oct 10:41 PM IST] playlist sync: stopping for now: YouTube quota: 10000 used today, need 1
+24 Oct 10:41 PM IST] promotion Short: waiting for Gemini's free limit (gemini-3.6-flash: 429 GenerateRequestsPerDayPerProjectPerModel-FreeTier (retry in 49683s) | gemini-3)
+24 Oct 10:42 PM IST] sponsorship outreach: waiting for Gemini's free limit (gemini-3.6-flash: 429 GenerateRequestsPerDayPerProjectPerModel-FreeTier (retry in 49651s) | gemini-3)
+24 Oct 10:42 PM IST] paid promotion deals: waiting for Gemini's free limit (gemini-3.6-flash: 429 GenerateRequestsPerDayPerProjectPerModel-FreeTier (retry in 49643s) | gemini-3)
 ```
