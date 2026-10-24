@@ -30,6 +30,7 @@ permissions:
 env:
   BOT_WORK: ${{ github.workspace }}/work
   REPO_KEY: ${{ secrets.REPO_KEY }}
+  GH_TOKEN: ${{ github.token }}
   GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
   BOT_KEY: ${{ secrets.BOT_KEY }}
   YT_TOKEN: ${{ secrets.YT_TOKEN }}           # read only here: the sample job never uploads
