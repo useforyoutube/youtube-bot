@@ -1,1 +1,1 @@
-{"id": "samples-7", "send": ["store_sample_real", "store_sample_followup", "doc_sample"], "at": "2026-10-24 IST"}
+{"id": "gemini-check-1", "send": ["gemini_check"], "at": "2026-10-24 IST"}
