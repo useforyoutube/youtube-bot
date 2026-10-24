@@ -1,5 +1,5 @@
 # 🤖 Video bot status
-_Updated 24 Oct 2026, 03:49 PM IST by the bot._
+_Updated 24 Oct 2026, 04:09 PM IST by the bot._
 
 ## Targets
 | | Now | Target |
@@ -52,24 +52,24 @@ vishnu24, kalki08, kalki09, kalki01, kalki02, kalki03, kalki04, kalki05, theveil
 main: Sujay Ganguly Creations
 
 ## Free limits
-- GitHub minutes this month: 1738 (public repo: no limit)
+- GitHub minutes this month: 1756 (public repo: no limit)
 - YouTube quota today (Pacific): 10000 / 9,800
 
 ## This run
 ```
-24 Oct 03:43 PM IST] health ok | YouTube quota used today 10000 | GitHub minutes this month 1731
-24 Oct 03:43 PM IST] writer: waiting for Gemini's free limit (gemini-3.6-flash: 429 GenerateRequestsPerDayPerProjectPerModel-FreeTier (retry in 74775s) | gemini-3)
-24 Oct 03:43 PM IST] pictures for vishnu24
-24 Oct 03:43 PM IST] metadata vishnu24
-24 Oct 03:43 PM IST] YouTube quota used up (YouTube quota: 10000 used today, need 1710) - rendering continues, uploads next run
-24 Oct 03:43 PM IST] pictures for kalki08
-24 Oct 03:43 PM IST] pictures for theveilc05
-24 Oct 03:43 PM IST] queue worked through
-24 Oct 03:43 PM IST] movie: stopping for now: YouTube quota: 10000 used today, need 1
-24 Oct 03:43 PM IST] improve: stopping for now: YouTube quota: 10000 used today, need 1
-24 Oct 03:45 PM IST] backup Shorts: waiting for Gemini's free limit (gemini-3.6-flash: 429 GenerateRequestsPerDayPerProjectPerModel-FreeTier (retry in 74683s) | gemini-3)
-24 Oct 03:45 PM IST] playlist sync: stopping for now: YouTube quota: 10000 used today, need 1
-24 Oct 03:45 PM IST] channel page: stopping for now: YouTube quota: 10000 used today, need 1
-24 Oct 03:45 PM IST] promotion Short: waiting for Gemini's free limit (gemini-3.6-flash: 429 GenerateRequestsPerDayPerProjectPerModel-FreeTier (retry in 74682s) | gemini-3)
-24 Oct 03:47 PM IST] sponsorship outreach: waiting for Gemini's free limit (gemini-3.6-flash: 429 GenerateRequestsPerDayPerProjectPerModel-FreeTier (retry in 74545s) | gemini-3)
+24 Oct 03:52 PM IST] health ok | YouTube quota used today 10000 | GitHub minutes this month 1738
+24 Oct 03:59 PM IST] writer: waiting for Gemini's free limit (gemini-3.6-flash: 429 GenerateRequestsPerDayPerProjectPerModel-FreeTier (retry in 73828s) | gemini-3)
+24 Oct 03:59 PM IST] pictures for vishnu24
+24 Oct 03:59 PM IST] metadata vishnu24
+24 Oct 03:59 PM IST] YouTube quota used up (YouTube quota: 10000 used today, need 1710) - rendering continues, uploads next run
+24 Oct 03:59 PM IST] pictures for kalki08
+24 Oct 03:59 PM IST] pictures for theveilc05
+24 Oct 03:59 PM IST] queue worked through
+24 Oct 03:59 PM IST] movie: stopping for now: YouTube quota: 10000 used today, need 1
+24 Oct 03:59 PM IST] improve: stopping for now: YouTube quota: 10000 used today, need 1
+24 Oct 04:08 PM IST] backup Shorts: waiting for Gemini's free limit (gemini-3.6-flash: 429 GenerateRequestsPerDayPerProjectPerModel-FreeTier (retry in 73275s) | gemini-3)
+24 Oct 04:08 PM IST] playlist sync: stopping for now: YouTube quota: 10000 used today, need 1
+24 Oct 04:08 PM IST] channel page: stopping for now: YouTube quota: 10000 used today, need 1
+24 Oct 04:08 PM IST] promotion Short: waiting for Gemini's free limit (gemini-3.6-flash: 429 GenerateRequestsPerDayPerProjectPerModel-FreeTier (retry in 73274s) | gemini-3)
+24 Oct 04:09 PM IST] sponsorship outreach: waiting for Gemini's free limit (gemini-3.6-flash: 429 GenerateRequestsPerDayPerProjectPerModel-FreeTier (retry in 73246s) | gemini-3)
 ```
