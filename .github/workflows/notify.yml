@@ -21,6 +21,9 @@ env:
   GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}   # optional second key
   GUMROAD_TOKEN: ${{ secrets.GUMROAD_TOKEN }}     # optional: a new Gumroad token set by the owner wins
   GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+  CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+  CF_TOKEN: ${{ secrets.CF_TOKEN }}
+  GH_TOKEN: ${{ github.token }}                   # sample pictures go to the public 'samples' release
 
 jobs:
   notify:
