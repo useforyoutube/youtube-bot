@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: notify                    # read-only: it never changes the bot's state, so it need not wait for video runs
+  group: notify-${{ github.run_id }}   # read-only jobs run side by side: a slow dry run never holds up the samples
   cancel-in-progress: false
 
 permissions:
