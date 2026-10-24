@@ -1,1 +1,52 @@
-{"id": "gemini-check-2", "send": ["gemini_check"], "at": "2026-10-24 IST"}
+{
+ "id": "anime-sample-3",
+ "send": [
+  "owner_note"
+ ],
+ "note": {
+  "subject": "Anime sample – please check",
+  "text": "Free anime test made on Kaggle's free GPU (nothing paid, nothing on your PC). Original characters of the same TYPE as popular anime. BEST: the two Wan 2.2 clips - the character stays the same and moves without melting (each clip is about 2 seconds; one takes ~9 minutes on the free GPU). The LTX clips are faster to make but the characters melt or change - only for comparison. The 4 pictures show the anime look of each character. Reply to Claude with: approve / change (what) / stop.",
+  "links": [
+   [
+    "BEST - Agni (village boy with fire spirit), Wan 2.2",
+    "https://github.com/useforyoutube/youtube-bot/releases/download/samples/anime3_wan_agni.mp4"
+   ],
+   [
+    "BEST - Rudra Sensei (strongest teacher), Wan 2.2",
+    "https://github.com/useforyoutube/youtube-bot/releases/download/samples/anime3_wan_rudra.mp4"
+   ],
+   [
+    "Picture - Rudra Sensei",
+    "https://github.com/useforyoutube/youtube-bot/releases/download/samples/anime3_rudra.jpg"
+   ],
+   [
+    "Picture - Neer (reborn as a water spirit)",
+    "https://github.com/useforyoutube/youtube-bot/releases/download/samples/anime3_neer.jpg"
+   ],
+   [
+    "Picture - Agni",
+    "https://github.com/useforyoutube/youtube-bot/releases/download/samples/anime3_agni.jpg"
+   ],
+   [
+    "Picture - Arjun (weakest hunter with a system)",
+    "https://github.com/useforyoutube/youtube-bot/releases/download/samples/anime3_arjun.jpg"
+   ],
+   [
+    "Comparison only - Agni, LTX (melts)",
+    "https://github.com/useforyoutube/youtube-bot/releases/download/samples/anime3_ltx_agni.mp4"
+   ],
+   [
+    "Comparison only - Neer, LTX",
+    "https://github.com/useforyoutube/youtube-bot/releases/download/samples/anime3_ltx_neer.mp4"
+   ],
+   [
+    "Comparison only - Rudra, LTX",
+    "https://github.com/useforyoutube/youtube-bot/releases/download/samples/anime3_ltx_rudra.mp4"
+   ],
+   [
+    "Comparison only - Arjun, LTX",
+    "https://github.com/useforyoutube/youtube-bot/releases/download/samples/anime3_ltx_arjun.mp4"
+   ]
+  ]
+ }
+}
