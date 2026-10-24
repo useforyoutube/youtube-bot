@@ -16,6 +16,9 @@ from cryptography.fernet import Fernet
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VAULT = os.path.join(ROOT, "vault.enc")
 DIRS = ["bot", "series", "state", "library"]
+# outside work/: the work cache is restored AFTER the vault is opened and used to overwrite these (review 24 Oct)
+SNAP = os.path.join(ROOT, ".vault_snapshot.json")     # what state/ and bot/ looked like when this run opened
+JOURNAL = os.path.join(ROOT, ".pending_restore.json")  # self-repair edits not yet verified
 
 
 def fernet():
@@ -34,7 +37,10 @@ def _read(path):
 
 def undo_unfinished_repair():
     """a self-repair / code-check edit that was never verified (the step was killed) is put back before sealing"""
-    p = os.path.join(os.environ.get("BOT_WORK", os.path.join(ROOT, "work")), "pending_restore.json")
+    p = JOURNAL
+    old = os.path.join(os.environ.get("BOT_WORK", os.path.join(ROOT, "work")), "pending_restore.json")
+    if os.path.exists(old):                            # an old journal that came back from the work cache:
+        os.remove(old)                                 # never replay it (it would undo newer code forever)
     if os.path.exists(p):
         import json
         for f, text in json.load(open(p, encoding="utf-8")).items():
@@ -78,24 +84,24 @@ def _hash(path):
 
 
 def snapshot_state():
-    """what state/ looked like when this run opened the vault (to merge a save clash file by file)"""
+    """what state/ and bot/ looked like when this run opened the vault (to merge a save clash file by file)"""
     import json
     snap = {}
-    for root, _, files in os.walk(os.path.join(ROOT, "state")):
-        for f in files:
-            p = os.path.join(root, f)
-            snap[os.path.relpath(p, ROOT).replace("\\", "/")] = _hash(p)
-    w = os.environ.get("BOT_WORK", os.path.join(ROOT, "work"))
-    os.makedirs(w, exist_ok=True)
-    json.dump(snap, open(os.path.join(w, "state_snapshot.json"), "w"))
+    for d in ("state", "bot"):
+        for root, _, files in os.walk(os.path.join(ROOT, d)):
+            if "__pycache__" in root:
+                continue
+            for f in files:
+                p = os.path.join(root, f)
+                snap[os.path.relpath(p, ROOT).replace("\\", "/")] = _hash(p)
+    json.dump(snap, open(SNAP, "w"))
 
 
 def adopt_code(path):
     data = fernet().decrypt(_read(path))
     with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as tar:
         import json
-        snap_p = os.path.join(os.environ.get("BOT_WORK", os.path.join(ROOT, "work")), "state_snapshot.json")
-        snap = json.load(open(snap_p)) if os.path.exists(snap_p) else {}
+        snap = json.load(open(SNAP)) if os.path.exists(SNAP) else {}
         unchanged = [m for m in tar.getmembers() if m.isfile() and m.name.startswith("state/") and (
             m.name not in snap or (os.path.exists(os.path.join(ROOT, m.name)) and
                                    _hash(os.path.join(ROOT, m.name)) == snap[m.name]))]
@@ -104,15 +110,30 @@ def adopt_code(path):
         except TypeError:
             tar.extractall(ROOT, members=unchanged)
         print(f"kept {len(unchanged)} newer state files from the other run")
-        members = [m for m in tar.getmembers() if m.name == "bot" or m.name.startswith("bot/")]
-        if members:                                    # files removed upstream must go too
-            import shutil
-            shutil.rmtree(os.path.join(ROOT, "bot"), ignore_errors=True)
+        # code: 3-way - a remote file replaces ours only if it CHANGED remotely since this run opened (a code push
+        # meanwhile); our own self-repair / code-check fixes stay when the remote code is just the old version
+        remote = {m.name: m for m in tar.getmembers() if m.isfile() and m.name.startswith("bot/")}
+        take = []
+        for name, m in remote.items():
+            if name not in snap:
+                take.append(m)                         # new upstream file
+                continue
+            if _hash_member(tar, m) != snap[name]:
+                take.append(m)                         # changed upstream
+        for name, h in snap.items():                   # deleted upstream and untouched here: delete
+            p = os.path.join(ROOT, name)
+            if name.startswith("bot/") and name not in remote and os.path.exists(p) and _hash(p) == h:
+                os.remove(p)
         try:
-            tar.extractall(ROOT, members=members, filter="data")
+            tar.extractall(ROOT, members=take, filter="data")
         except TypeError:
-            tar.extractall(ROOT, members=members)
-    print(f"took the newer code ({len(members)} files) from {os.path.basename(path)}")
+            tar.extractall(ROOT, members=take)
+    print(f"took {len(take)} newer code files from {os.path.basename(path)} (this run's own code fixes kept)")
+
+
+def _hash_member(tar, m):
+    import hashlib
+    return hashlib.md5(tar.extractfile(m).read()).hexdigest()
 
 
 if __name__ == "__main__":

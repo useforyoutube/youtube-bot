@@ -69,7 +69,7 @@ jobs:
           restore-keys: work-
       - name: Make and upload videos
         id: bot
-        timeout-minutes: 330     # stopped 25 min before GitHub's 6 h cut: saving below always gets its time
+        timeout-minutes: 318     # 3 setup + 318 + repair 20 + saving ~8 < 355: saving always gets its time
         run: |
           rm -f work/continue.flag
           if [ "${{ github.event.inputs.write_only }}" = "true" ]; then
@@ -77,11 +77,11 @@ jobs:
           elif [ "${{ github.event.inputs.selftest }}" = "true" ]; then
             python bot/run.py --selftest
           else
-            python bot/run.py --max-hours "${{ github.event.inputs.max_hours || '5.3' }}"
+            python bot/run.py --max-hours "${{ github.event.inputs.max_hours || '5.1' }}"
           fi
       - name: Self-repair (only after a crash; a fix is kept only if the self-test passes)
         if: failure() && steps.bot.outcome == 'failure'
-        timeout-minutes: 150
+        timeout-minutes: 20
         run: python bot/repair.py
       - name: Keep the self-test video for checking
         if: github.event.inputs.selftest == 'true'
@@ -102,6 +102,7 @@ jobs:
         if: always()
         run: gh cache list --key work- --sort created_at --order desc --limit 50 --json id --jq '.[2:][].id' | xargs -r -n1 gh cache delete || true
       - name: Lock the bot and save progress
+        id: save
         if: always()
         run: |
           python vault/boot.py seal || true
@@ -124,5 +125,5 @@ jobs:
             echo "SAVE FAILED: this run's progress could not be pushed"; exit 1
           fi
       - name: Next run right away (a requested movie is still being made)
-        if: always() && hashFiles('work/continue.flag') != ''
+        if: always() && steps.save.outcome == 'success' && hashFiles('work/continue.flag') != ''
         run: gh workflow run daily.yml --ref main
