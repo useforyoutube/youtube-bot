@@ -18,6 +18,7 @@ env:
   YT_TOKEN: ${{ secrets.YT_TOKEN }}
   BOT_KEY: ${{ secrets.BOT_KEY }}
   GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+  GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}   # optional second key
   GUMROAD_TOKEN: ${{ secrets.GUMROAD_TOKEN }}     # optional: a new Gumroad token set by the owner wins
   GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
 

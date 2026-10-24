@@ -43,6 +43,7 @@ env:
   YT_TOKEN: ${{ secrets.YT_TOKEN }}
   BOT_KEY: ${{ secrets.BOT_KEY }}
   GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+  GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}   # optional second key
   GH_TOKEN: ${{ github.token }}
 
 jobs:
